@@ -42,12 +42,16 @@
   </ItemGroup>
   <ItemGroup>
     <Compile Include="src\AssemblyInfo.cs" />
+    <Compile Include="src\XBee\Exceptions\XBeeException.cs" />
     <Compile Include="src\XBee\Utils\ByteUtils.cs" />
     <Compile Include="src\XBee\Xbee.cs" />
     <Compile Include="src\XBee\XBeeAddress.cs" />
     <Compile Include="src\XBee\XBeeAddress16.cs" />
     <Compile Include="src\XBee\XBeeAddress64.cs" />
     <Compile Include="src\XBee\XBeeAPICommandId.cs" />
+    <Compile Include="src\XBee\XBeeChecksum.cs" />
+    <Compile Include="src\XBee\XBeeHardwareVersion.cs" />
+    <Compile Include="src\XBee\XBeePacket.cs" />
   </ItemGroup>
   <ItemGroup />
   <Import Project="$(MSBuildToolsPath)\Microsoft.CSharp.targets" />

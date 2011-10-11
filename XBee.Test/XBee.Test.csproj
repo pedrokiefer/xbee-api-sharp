@@ -56,6 +56,7 @@
     <Compile Include="src\Program.cs" />
     <Compile Include="src\AssemblyInfo.cs" />
     <Compile Include="src\XBee\XBeeAddressTest.cs" />
+    <Compile Include="src\XBee\XBeeChecksumTest.cs" />
   </ItemGroup>
   <ItemGroup>
     <ProjectReference Include="..\XBee\XBee.csproj">
