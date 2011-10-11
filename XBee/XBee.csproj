@@ -53,6 +53,7 @@
     <Compile Include="src\XBee\XBeeAddress64.cs" />
     <Compile Include="src\XBee\XBeeAPICommandId.cs" />
     <Compile Include="src\XBee\XBeeChecksum.cs" />
+    <Compile Include="src\XBee\XBeeConnection.cs" />
     <Compile Include="src\XBee\XBeeFrame.cs" />
     <Compile Include="src\XBee\XBeeHardwareVersion.cs" />
     <Compile Include="src\XBee\XBeeNode.cs" />

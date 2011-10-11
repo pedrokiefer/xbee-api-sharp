@@ -57,12 +57,18 @@
     <Compile Include="src\AssemblyInfo.cs" />
     <Compile Include="src\XBee\XBeeAddressTest.cs" />
     <Compile Include="src\XBee\XBeeChecksumTest.cs" />
+    <Compile Include="src\XBee\XBeeUnmarshalerTest.cs" />
   </ItemGroup>
   <ItemGroup>
     <ProjectReference Include="..\XBee\XBee.csproj">
       <Project>{026296FF-9939-49DC-AD87-7F8780D7E1B0}</Project>
       <Name>XBeeAPISharp</Name>
     </ProjectReference>
+  </ItemGroup>
+  <ItemGroup>
+    <None Include="src\NLog.config">
+      <CopyToOutputDirectory>PreserveNewest</CopyToOutputDirectory>
+    </None>
   </ItemGroup>
   <Import Project="$(MSBuildToolsPath)\Microsoft.CSharp.targets" />
   <!-- To modify your build process, add your task inside one of the targets below and uncomment it. 
