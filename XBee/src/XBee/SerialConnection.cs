@@ -2,13 +2,12 @@
 using System.Collections.Generic;
 using System.Linq;
 using System.Text;
-using System.IO;
+using System.IO.Ports;
 
 namespace XBee
 {
-    public interface XBeeConnection
+    public class SerialConnection : XBeeConnection
     {
-        public Stream GetStream();
-        public void Close();
+        private SerialPort serialPort;
     }
 }
