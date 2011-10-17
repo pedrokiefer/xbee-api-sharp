@@ -6,7 +6,7 @@
     <ProductVersion>8.0.30703</ProductVersion>
     <SchemaVersion>2.0</SchemaVersion>
     <ProjectGuid>{20E84272-AD1A-41CA-8BF7-0598F5C0FAA0}</ProjectGuid>
-    <OutputType>Exe</OutputType>
+    <OutputType>Library</OutputType>
     <AppDesignerFolder>Properties</AppDesignerFolder>
     <RootNamespace>XBee.Test</RootNamespace>
     <AssemblyName>XBee.Test</AssemblyName>
@@ -53,7 +53,6 @@
     <Reference Include="System.Xml" />
   </ItemGroup>
   <ItemGroup>
-    <Compile Include="src\Program.cs" />
     <Compile Include="src\AssemblyInfo.cs" />
     <Compile Include="src\XBee\ATCommandTest.cs" />
     <Compile Include="src\XBee\XBeeAddressTest.cs" />
