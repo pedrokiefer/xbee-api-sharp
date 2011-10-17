@@ -8,7 +8,7 @@ namespace XBee
     public abstract class XBeeFrame
     {
         protected XBeeAPICommandId commandId;
-        protected byte FrameId { get; set; }
+        public byte FrameId { get; set; }
 
         public XBeeAPICommandId getCommandId()
         {

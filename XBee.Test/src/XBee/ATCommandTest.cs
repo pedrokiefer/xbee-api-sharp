@@ -20,6 +20,14 @@ namespace XBee.Test
         }
 
         [Test]
+        public void TestATCommandDHwithFrameId()
+        {
+            ATCommand cmd = new ATCommand(AT.DH);
+            cmd.FrameId = 0x02;
+            Assert.AreEqual(new byte[] { 0x08, 0x02, (byte) 'D', (byte) 'H'}, cmd.ToByteArray());
+        }
+
+        [Test]
         public void TestATQueueCommandDH()
         {
             ATCommand cmd = new ATQueueCommand(AT.DH);
