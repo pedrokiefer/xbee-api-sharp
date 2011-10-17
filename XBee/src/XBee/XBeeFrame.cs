@@ -8,10 +8,13 @@ namespace XBee
     public abstract class XBeeFrame
     {
         protected XBeeAPICommandId commandId;
+        protected byte FrameId { get; set; }
 
         public XBeeAPICommandId getCommandId()
         {
             return this.commandId;
         }
+
+        public abstract byte[] ToByteArray();
     }
 }
