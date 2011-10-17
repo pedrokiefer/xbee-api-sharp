@@ -14,7 +14,6 @@ namespace XBee.Test
         public void TestXBeeChecksumCalculate()
         {
             byte[] packet = new byte[] { 0x83, 0x56, 0x78, 0x24, 0x00, 0x01, 0x02, 0x00, 0x03, 0xff };
-
             Assert.AreEqual((byte)0x85, XBeeChecksum.Calculate(packet));
         }
 

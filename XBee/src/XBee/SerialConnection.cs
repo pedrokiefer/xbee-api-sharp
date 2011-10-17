@@ -23,7 +23,7 @@ namespace XBee
 
         public void Close()
         {
-
+            serialPort.Close();
         }
     }
 }
