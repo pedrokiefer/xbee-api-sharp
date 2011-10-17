@@ -55,6 +55,7 @@
   <ItemGroup>
     <Compile Include="src\Program.cs" />
     <Compile Include="src\AssemblyInfo.cs" />
+    <Compile Include="src\XBee\ATCommandTest.cs" />
     <Compile Include="src\XBee\XBeeAddressTest.cs" />
     <Compile Include="src\XBee\XBeeChecksumTest.cs" />
     <Compile Include="src\XBee\XBeeUnmarshalerTest.cs" />
