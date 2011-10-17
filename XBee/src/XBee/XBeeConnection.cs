@@ -8,7 +8,7 @@ namespace XBee
 {
     public interface XBeeConnection
     {
-        public Stream GetStream();
-        public void Close();
+        Stream GetStream();
+        void Close();
     }
 }
