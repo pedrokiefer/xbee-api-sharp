@@ -7,5 +7,10 @@ namespace XBee.Frames
 {
     public class TransmitDataRequest : XBeeFrame
     {
+
+        public override byte[] ToByteArray()
+        {
+            return new byte[] { };
+        }
     }
 }

@@ -20,6 +20,11 @@ namespace XBee.Test
         public class XBeeUnknownFrame : XBeeFrame
         {
             public XBeeUnknownFrame() { }
+
+            public override byte[] ToByteArray()
+            {
+                return new byte[] { };
+            }
         }
 
         [Test]
