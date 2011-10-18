@@ -10,7 +10,7 @@ namespace XBee
         protected XBeeAPICommandId commandId;
         public byte FrameId { get; set; }
 
-        public XBeeAPICommandId getCommandId()
+        public XBeeAPICommandId GetCommandId()
         {
             return this.commandId;
         }
