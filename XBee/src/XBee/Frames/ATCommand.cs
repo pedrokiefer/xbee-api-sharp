@@ -14,6 +14,12 @@ namespace XBee.Frames
         private bool hasValue;
         private long value;
 
+        public AT Command
+        {
+            get { return atCommand; }
+            set { this.atCommand = value; }
+        }
+
         public ATCommand(AT atCommand)
         {
             this.atCommand = atCommand;
