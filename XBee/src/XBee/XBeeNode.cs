@@ -3,11 +3,11 @@ using System.Collections.Generic;
 using System.Linq;
 using System.Text;
 
-namespace XBee.src.XBee
+namespace XBee
 {
     public class XBeeNode
     {
-        private XBeeAddress16 address16;
-        private XBeeAddress64 address64;
+        public XBeeAddress16 Address16 { get; set; }
+        public XBeeAddress64 Address64 { get; set; }
     }
 }
