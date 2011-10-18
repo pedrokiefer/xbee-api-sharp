@@ -32,12 +32,12 @@ namespace XBee.Frames
         {
             MemoryStream stream = new MemoryStream();
 
-            stream.WriteByte((byte)commandId);
+            stream.WriteByte((byte) commandId);
             stream.WriteByte(FrameId);
 
-            var cmd = ((ATAttr)atCommand.GetAttr()).ATCommand.ToCharArray();
-            stream.WriteByte((byte)cmd[0]);
-            stream.WriteByte((byte)cmd[1]);
+            var cmd = ((ATAttr) atCommand.GetAttr()).ATCommand.ToCharArray();
+            stream.WriteByte((byte) cmd[0]);
+            stream.WriteByte((byte) cmd[1]);
 
             if (hasValue) {
                 // TODO: write value;
