@@ -15,7 +15,7 @@ namespace XBee
 
         public static XBeeFrame Unmarshal(XBeePacket packet)
         {
-            return new TransmitDataRequest();
+            return new TransmitDataRequest(new XBeeNode());
         }
 
         private static Dictionary<XBeeAPICommandId, Type> createFramesMap()
