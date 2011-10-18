@@ -46,10 +46,16 @@
     <Compile Include="src\XBee\Exceptions\XBeeFrameException.cs" />
     <Compile Include="src\XBee\Frames\AT.cs" />
     <Compile Include="src\XBee\Frames\ATCommand.cs" />
+    <Compile Include="src\XBee\Frames\ATCommandResponse.cs" />
     <Compile Include="src\XBee\Frames\ATQueueCommand.cs" />
+    <Compile Include="src\XBee\Frames\CreateSourceRoute.cs" />
     <Compile Include="src\XBee\Frames\ExplicitAddressingTransmit.cs" />
+    <Compile Include="src\XBee\Frames\ModemStatus.cs" />
     <Compile Include="src\XBee\Frames\RemoteATCommand.cs" />
     <Compile Include="src\XBee\Frames\TransmitDataRequest.cs" />
+    <Compile Include="src\XBee\Frames\ZigBeeExplicitRXIndicator.cs" />
+    <Compile Include="src\XBee\Frames\ZigBeeReceivePacket.cs" />
+    <Compile Include="src\XBee\Frames\ZigBeeTransmitStatus.cs" />
     <Compile Include="src\XBee\SerialConnection.cs" />
     <Compile Include="src\XBee\Utils\ByteUtils.cs" />
     <Compile Include="src\XBee\Utils\EnumAttribute.cs" />
