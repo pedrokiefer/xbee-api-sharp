@@ -36,8 +36,8 @@ namespace XBee.Frames
             stream.WriteByte(FrameId);
 
             var cmd = ((ATAttr)atCommand.GetAttr()).ATCommand.ToCharArray();
-            stream.WriteByte((byte) cmd[0]);
-            stream.WriteByte((byte) cmd[1]);
+            stream.WriteByte((byte)cmd[0]);
+            stream.WriteByte((byte)cmd[1]);
 
             if (hasValue) {
                 // TODO: write value;
@@ -45,6 +45,18 @@ namespace XBee.Frames
             }
 
             return stream.ToArray();
+        }
+    }
+
+    public class ATValue
+    {
+        private byte[] byteData;
+
+        public static ATValue NewFromLong(ulong value)
+        {
+            ATValue v = new ATValue();
+
+            return v;
         }
     }
 }
