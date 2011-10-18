@@ -33,7 +33,7 @@ namespace XBee
 
             XBeeAddress16 addr = (XBeeAddress16) obj;
 
-            if (Array.Equals(this.address, addr.GetAddress()))
+            if (this.GetAddress().SequenceEqual(addr.GetAddress()))
                 return true;
 
             return false;

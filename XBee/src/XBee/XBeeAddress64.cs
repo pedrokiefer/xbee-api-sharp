@@ -32,7 +32,7 @@ namespace XBee
 
             XBeeAddress64 addr = (XBeeAddress64) obj;
 
-            if (Array.Equals(this.address, addr.GetAddress()))
+            if (this.GetAddress().SequenceEqual(addr.GetAddress()))
                 return true;
 
             return false;
