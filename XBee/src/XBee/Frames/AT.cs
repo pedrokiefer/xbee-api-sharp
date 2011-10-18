@@ -27,7 +27,7 @@ namespace XBee.Frames
     public enum AT
     {
         [ATAttr("DH", "Destination Address High", 0xFFFFFFFF)]
-        DH,
+        DH = 0x10000,
         [ATAttr("DL", "Destination Address Low", 0xFFFFFFFF)]
         DL,
         [ATAttr("MY", "16-bit Network Address", 0xFFFE)]
