@@ -20,6 +20,13 @@ namespace XBee.Frames
             set { this.atCommand = value; }
         }
 
+        public ATCommand()
+        {
+            this.value = 0;
+            this.hasValue = false;
+            this.commandId = XBeeAPICommandId.AT_REQUEST;
+        }
+
         public ATCommand(AT atCommand)
         {
             this.atCommand = atCommand;
