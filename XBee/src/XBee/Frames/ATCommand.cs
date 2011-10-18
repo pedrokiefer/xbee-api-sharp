@@ -46,6 +46,15 @@ namespace XBee.Frames
 
             return stream.ToArray();
         }
+
+        public override void Parse(MemoryStream data)
+        {
+            var cmd = new char[2];
+            cmd[0] = (char) data.ReadByte();
+            cmd[1] = (char) data.ReadByte();
+
+            Console.WriteLine(String.Format("{0}", new String(cmd)));
+        }
     }
 
     public class ATValue

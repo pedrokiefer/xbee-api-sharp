@@ -55,5 +55,10 @@ namespace XBee.Frames
 
             return stream.ToArray();
         }
+
+        public override void Parse(MemoryStream data)
+        {
+            throw new NotImplementedException();
+        }
     }
 }

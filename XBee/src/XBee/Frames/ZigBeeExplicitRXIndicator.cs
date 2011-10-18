@@ -2,6 +2,7 @@
 using System.Collections.Generic;
 using System.Linq;
 using System.Text;
+using System.IO;
 
 namespace XBee.Frames
 {
@@ -15,6 +16,11 @@ namespace XBee.Frames
         public override byte[] ToByteArray()
         {
             return new byte[] { };
+        }
+
+        public override void Parse(MemoryStream data)
+        {
+            throw new NotImplementedException();
         }
     }
 

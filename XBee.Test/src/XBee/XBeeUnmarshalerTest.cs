@@ -2,6 +2,7 @@
 using System.Collections.Generic;
 using System.Linq;
 using System.Text;
+using System.IO;
 using NUnit.Framework;
 using XBee;
 using XBee.Exceptions;
@@ -24,6 +25,11 @@ namespace XBee.Test
             public override byte[] ToByteArray()
             {
                 return new byte[] { };
+            }
+
+            public override void Parse(MemoryStream data)
+            {
+                throw new NotImplementedException();
             }
         }
 
