@@ -48,6 +48,7 @@
     <Compile Include="src\XBee\Frames\ATCommand.cs" />
     <Compile Include="src\XBee\Frames\ATQueueCommand.cs" />
     <Compile Include="src\XBee\Frames\ExplicitAddressingTransmit.cs" />
+    <Compile Include="src\XBee\Frames\RemoteATCommand.cs" />
     <Compile Include="src\XBee\Frames\TransmitDataRequest.cs" />
     <Compile Include="src\XBee\SerialConnection.cs" />
     <Compile Include="src\XBee\Utils\ByteUtils.cs" />
