@@ -55,6 +55,7 @@
   <ItemGroup>
     <Compile Include="src\AssemblyInfo.cs" />
     <Compile Include="src\XBee\Frames\ATCommandTest.cs" />
+    <Compile Include="src\XBee\Frames\ExplicitAddressingTransmitTest.cs" />
     <Compile Include="src\XBee\Frames\TransmitDataRequestTest.cs" />
     <Compile Include="src\XBee\XBeeAddressTest.cs" />
     <Compile Include="src\XBee\XBeeChecksumTest.cs" />
