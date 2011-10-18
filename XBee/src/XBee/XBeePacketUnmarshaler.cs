@@ -2,6 +2,7 @@
 using System.Collections.Generic;
 using System.Linq;
 using System.Text;
+using System.IO;
 using NLog;
 using XBee.Exceptions;
 using XBee.Frames;
@@ -27,6 +28,38 @@ namespace XBee
             map.Add(XBeeAPICommandId.TRANSMIT_DATA_REQUEST, typeof(TransmitDataRequest));
 
             return map;
+        }
+
+        public static XBeeFrame Unmarshal(byte[] packetData)
+        {
+            MemoryStream dataStream = new MemoryStream(packetData);
+            return Unmarshal(dataStream);
+        }
+
+        public static XBeeFrame Unmarshal(MemoryStream dataStream)
+        {
+            XBeeFrame frame;
+            uint length = (uint) (dataStream.ReadByte() << 8 | dataStream.ReadByte());
+
+            if ((length == 0) || (length > 0xFFFF))
+                throw new XBeeFrameException("Invalid Frame Lenght");
+
+            if (length != dataStream.Length - 2)
+                throw new XBeeFrameException("Invalid Frame Lenght");
+
+            XBeeAPICommandId cmd = (XBeeAPICommandId) dataStream.ReadByte();
+
+            if (framesMap.ContainsKey(cmd)) {
+                frame = (XBeeFrame) Activator.CreateInstance(framesMap[cmd]);
+
+                frame.FrameId = (byte) dataStream.ReadByte();
+                frame.Parse(dataStream);
+
+            } else {
+                throw new XBeeFrameException(String.Format("Unsupported Command Id 0x{0:X2}", cmd));
+            }
+
+            return frame;
         }
 
         public static void registerResponseHandler(XBeeAPICommandId commandId, Type typeHandler)
