@@ -14,9 +14,9 @@ namespace XBee.Utils
 
             StringBuilder sb = new StringBuilder();
             foreach (byte b in data) {
-                sb.Append(String.Format("0x{0:x2}", b));
+                sb.Append(String.Format("0x{0:X2} ", b));
             }
-            return sb.ToString();
+            return sb.ToString().TrimEnd();
         }
     }
 }
