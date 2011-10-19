@@ -54,10 +54,24 @@
   </ItemGroup>
   <ItemGroup>
     <Compile Include="src\AssemblyInfo.cs" />
+    <Compile Include="src\XBee\Frames\ATCommandResponseTest.cs" />
     <Compile Include="src\XBee\Frames\ATCommandTest.cs" />
+    <Compile Include="src\XBee\Frames\ATQueueCommandTest.cs" />
+    <Compile Include="src\XBee\Frames\CreateSourceRouteTest.cs" />
     <Compile Include="src\XBee\Frames\ExplicitAddressingTransmitTest.cs" />
+    <Compile Include="src\XBee\Frames\ManyToOneRouteRequestTest.cs" />
+    <Compile Include="src\XBee\Frames\ModemStatusTest.cs" />
+    <Compile Include="src\XBee\Frames\NodeIdentificationTest.cs" />
+    <Compile Include="src\XBee\Frames\OverAirUpdateStatusTest.cs" />
     <Compile Include="src\XBee\Frames\RemoteATCommandTest.cs" />
+    <Compile Include="src\XBee\Frames\RemoteCommandResponseTest.cs" />
+    <Compile Include="src\XBee\Frames\RouteRecordIndicatorTest.cs" />
+    <Compile Include="src\XBee\Frames\SensorReadIndicatorTest.cs" />
     <Compile Include="src\XBee\Frames\TransmitDataRequestTest.cs" />
+    <Compile Include="src\XBee\Frames\ZigBeeExplicitRXIndicatorTest.cs" />
+    <Compile Include="src\XBee\Frames\ZigBeeIODataSampleTest.cs" />
+    <Compile Include="src\XBee\Frames\ZigBeeReceivePacketTest.cs" />
+    <Compile Include="src\XBee\Frames\ZigBeeTransmitStatusTest.cs" />
     <Compile Include="src\XBee\XBeeAddressTest.cs" />
     <Compile Include="src\XBee\XBeeChecksumTest.cs" />
     <Compile Include="src\XBee\XBeeUnmarshalerTest.cs" />
