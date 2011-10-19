@@ -50,10 +50,17 @@
     <Compile Include="src\XBee\Frames\ATQueueCommand.cs" />
     <Compile Include="src\XBee\Frames\CreateSourceRoute.cs" />
     <Compile Include="src\XBee\Frames\ExplicitAddressingTransmit.cs" />
+    <Compile Include="src\XBee\Frames\ManyToOneRouteRequest.cs" />
     <Compile Include="src\XBee\Frames\ModemStatus.cs" />
+    <Compile Include="src\XBee\Frames\NodeIdentification.cs" />
+    <Compile Include="src\XBee\Frames\OverAirUpdateStatus.cs" />
     <Compile Include="src\XBee\Frames\RemoteATCommand.cs" />
+    <Compile Include="src\XBee\Frames\RemoteCommandResponse.cs" />
+    <Compile Include="src\XBee\Frames\RouteRecordIndicator.cs" />
+    <Compile Include="src\XBee\Frames\SensorReadIndicator.cs" />
     <Compile Include="src\XBee\Frames\TransmitDataRequest.cs" />
     <Compile Include="src\XBee\Frames\ZigBeeExplicitRXIndicator.cs" />
+    <Compile Include="src\XBee\Frames\ZigBeeIODataSample.cs" />
     <Compile Include="src\XBee\Frames\ZigBeeReceivePacket.cs" />
     <Compile Include="src\XBee\Frames\ZigBeeTransmitStatus.cs" />
     <Compile Include="src\XBee\SerialConnection.cs" />
