@@ -30,6 +30,10 @@ namespace XBee.Frames
         {
             var atCommands = (AT[]) Enum.GetValues(typeof(AT));
             AT cmd = Array.Find(atCommands, at => ((ATAttr)at.GetAttr()).ATCommand == value);
+
+            if (cmd == 0)
+                return AT.UNKNOWN;
+
             return cmd;
         }
     }
@@ -224,6 +228,9 @@ namespace XBee.Frames
         [ATAttr("IS", "Force Sample")]
         IS,
         [ATAttr("1S", "XBee Sensor Sample")]
-        SENSOR_SAMPLE
+        SENSOR_SAMPLE,
+
+        [ATAttr("", "Unknown AT Command")]
+        UNKNOWN
     }
 }
