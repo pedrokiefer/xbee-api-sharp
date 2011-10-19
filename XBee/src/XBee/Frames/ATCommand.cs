@@ -24,7 +24,7 @@ namespace XBee.Frames
         {
             this.value = 0;
             this.hasValue = false;
-            this.commandId = XBeeAPICommandId.AT_REQUEST;
+            this.commandId = XBeeAPICommandId.AT_COMMAND_REQUEST;
         }
 
         public ATCommand(AT atCommand)
@@ -32,7 +32,7 @@ namespace XBee.Frames
             this.atCommand = atCommand;
             this.value = 0;
             this.hasValue = false;
-            this.commandId = XBeeAPICommandId.AT_REQUEST;
+            this.commandId = XBeeAPICommandId.AT_COMMAND_REQUEST;
         }
 
         public void SetValue(long value)
@@ -68,6 +68,9 @@ namespace XBee.Frames
 
             this.atCommand = ATUtil.Parse(new String(cmd));
 
+            if (data.Position != data.Length) {
+                Console.WriteLine("has data! length = {0} pos = {1}", data.Length, data.Position);
+            }
         }
     }
 

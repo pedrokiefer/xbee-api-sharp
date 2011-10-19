@@ -38,7 +38,7 @@ namespace XBee.Test
         [ExpectedException(typeof(XBeeException), ExpectedMessage = "Invalid Frame Handler")]
         public void TestXBeeUnmarshalerRegisterWrong()
         {
-            XBeePacketUnmarshaler.registerResponseHandler(XBeeAPICommandId.REMOTE_AT_REQUEST, typeof(NotXBeeFrame));
+            XBeePacketUnmarshaler.registerResponseHandler(XBeeAPICommandId.REMOTE_AT_COMMAND_REQUEST, typeof(NotXBeeFrame));
         }
 
         [Test]

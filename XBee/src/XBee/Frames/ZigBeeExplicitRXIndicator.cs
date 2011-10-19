@@ -10,7 +10,7 @@ namespace XBee.Frames
     {
         public ZigBeeExplicitRXIndicator()
         {
-            this.commandId = XBeeAPICommandId.RECEIVE_EXPLICIT_PACKET_RESPONSE;
+            this.commandId = XBeeAPICommandId.EXPLICIT_RX_INDICATOR_RESPONSE;
         }
 
         public override byte[] ToByteArray()

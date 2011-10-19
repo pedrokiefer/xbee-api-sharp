@@ -10,7 +10,7 @@ namespace XBee.Frames
     {
         public ATCommandResponse()
         {
-            this.commandId = XBeeAPICommandId.AT_RESPONSE;
+            this.commandId = XBeeAPICommandId.AT_COMMAND_RESPONSE;
         }
 
         public override byte[] ToByteArray()

@@ -16,7 +16,7 @@ namespace XBee.Frames
 
         public RemoteATCommand(AT atCommand, XBeeNode destination)
         {
-            this.commandId = XBeeAPICommandId.REMOTE_AT_REQUEST;
+            this.commandId = XBeeAPICommandId.REMOTE_AT_COMMAND_REQUEST;
             this.atCommand = atCommand;
             this.destination = destination;
         }

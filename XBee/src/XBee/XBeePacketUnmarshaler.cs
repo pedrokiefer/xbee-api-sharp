@@ -23,8 +23,8 @@ namespace XBee
         {
             Dictionary<XBeeAPICommandId, Type> map = new Dictionary<XBeeAPICommandId, Type>();
 
-            map.Add(XBeeAPICommandId.AT_REQUEST, typeof(ATCommand));
-            map.Add(XBeeAPICommandId.AT_QUEUE_REQUEST, typeof(ATQueueCommand));
+            map.Add(XBeeAPICommandId.AT_COMMAND_REQUEST, typeof(ATCommand));
+            map.Add(XBeeAPICommandId.AT_COMMAND_QUEUE_REQUEST, typeof(ATQueueCommand));
             map.Add(XBeeAPICommandId.TRANSMIT_DATA_REQUEST, typeof(TransmitDataRequest));
 
             return map;
