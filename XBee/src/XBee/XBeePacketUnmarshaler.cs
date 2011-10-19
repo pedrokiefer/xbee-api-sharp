@@ -62,7 +62,7 @@ namespace XBee
             return frame;
         }
 
-        public static void registerResponseHandler(XBeeAPICommandId commandId, Type typeHandler)
+        public static void RegisterResponseHandler(XBeeAPICommandId commandId, Type typeHandler)
         {
             if (!typeHandler.IsSubclassOf(typeof(XBeeFrame)))
                 throw new XBeeException("Invalid Frame Handler");
