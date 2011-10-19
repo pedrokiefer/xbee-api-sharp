@@ -43,8 +43,27 @@ namespace XBee.Test
 
         [Test]
         public void TestXBeeUnmarshalerRegister()
-        {       
+        {
             XBeePacketUnmarshaler.registerResponseHandler(XBeeAPICommandId.UNKNOWN, typeof(XBeeUnknownFrame));
+        }
+
+        [Test]
+        public void TestXBeeUnmarshalerATCommandWrongLength()
+        {
+            var packetData = new byte[] { 0x00, 0x08, 0x08, 0x01, (byte) 'D', (byte) 'H' };
+            Assert.Throws<XBeeFrameException>(delegate { XBeeFrame frame = XBeePacketUnmarshaler.Unmarshal(packetData); });
+        }
+
+        [Test]
+        public void TestXBeeUnmarshalerATCommandNoData()
+        {
+            var packetData = new byte[] { 0x00, 0x04, 0x08, 0x01, (byte) 'D', (byte) 'H' };
+
+            XBeeFrame frame = XBeePacketUnmarshaler.Unmarshal(packetData);
+            Assert.That(frame, Is.InstanceOf<ATCommand>());
+            ATCommand cmd = (ATCommand) frame;
+            Assert.That(cmd.FrameId, Is.EqualTo(0x01));
+            Assert.That(cmd.Command, Is.EqualTo(AT.DH));
         }
 
         [Test]

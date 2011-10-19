@@ -66,7 +66,8 @@ namespace XBee.Frames
             cmd[0] = (char) data.ReadByte();
             cmd[1] = (char) data.ReadByte();
 
-            Console.WriteLine(String.Format("{0}", new String(cmd)));
+            this.atCommand = ATUtil.Parse(new String(cmd));
+
         }
     }
 

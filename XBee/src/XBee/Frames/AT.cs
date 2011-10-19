@@ -24,6 +24,16 @@ namespace XBee.Frames
         public ulong MaximumValue { get; private set; }
     }
 
+    public class ATUtil
+    {
+        public static AT Parse(string value)
+        {
+            var atCommands = (AT[]) Enum.GetValues(typeof(AT));
+            AT cmd = Array.Find(atCommands, at => ((ATAttr)at.GetAttr()).ATCommand == value);
+            return cmd;
+        }
+    }
+
     public enum AT
     {
         [ATAttr("DH", "Destination Address High", 0xFFFFFFFF)]
