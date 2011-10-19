@@ -26,6 +26,21 @@ namespace XBee
             map.Add(XBeeAPICommandId.AT_COMMAND_REQUEST, typeof(ATCommand));
             map.Add(XBeeAPICommandId.AT_COMMAND_QUEUE_REQUEST, typeof(ATQueueCommand));
             map.Add(XBeeAPICommandId.TRANSMIT_DATA_REQUEST, typeof(TransmitDataRequest));
+            map.Add(XBeeAPICommandId.EXPLICIT_ADDR_REQUEST, typeof(ExplicitAddressingTransmit));
+            map.Add(XBeeAPICommandId.REMOTE_AT_COMMAND_REQUEST, typeof(RemoteATCommand));
+            map.Add(XBeeAPICommandId.CREATE_SOURCE_ROUTE, typeof(CreateSourceRoute));
+            map.Add(XBeeAPICommandId.AT_COMMAND_RESPONSE, typeof(ATCommandResponse));
+            map.Add(XBeeAPICommandId.MODEM_STATUS_RESPONSE, typeof(ModemStatus));
+            map.Add(XBeeAPICommandId.TRANSMIT_STATUS_RESPONSE, typeof(ZigBeeTransmitStatus));
+            map.Add(XBeeAPICommandId.RECEIVE_PACKET_RESPONSE, typeof(ZigBeeReceivePacket));
+            map.Add(XBeeAPICommandId.EXPLICIT_RX_INDICATOR_RESPONSE, typeof(ZigBeeExplicitRXIndicator));
+            map.Add(XBeeAPICommandId.IO_SAMPLE_RESPONSE, typeof(ZigBeeIODataSample));
+            map.Add(XBeeAPICommandId.SENSOR_READ_INDICATOR, typeof(SensorReadIndicator));
+            map.Add(XBeeAPICommandId.NODE_IDENTIFIER_RESPONSE, typeof(NodeIdentification));
+            map.Add(XBeeAPICommandId.REMOTE_AT_COMMAND_RESPONSE, typeof(RemoteCommandResponse));
+            map.Add(XBeeAPICommandId.FIRMWARE_UPDATE_STATUS, typeof(OverAirUpdateStatus));
+            map.Add(XBeeAPICommandId.ROUTE_RECORD_INDICATOR, typeof(RouteRecordIndicator));
+            map.Add(XBeeAPICommandId.MANYTOONE_ROUTE_REQUEST_INDICATOR, typeof(ManyToOneRouteRequest));
 
             return map;
         }
