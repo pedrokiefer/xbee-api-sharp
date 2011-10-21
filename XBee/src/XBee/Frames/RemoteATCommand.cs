@@ -9,16 +9,23 @@ namespace XBee.Frames
 {
     public class RemoteATCommand : XBeeFrame
     {
-        private AT atCommand;
-        private XBeeNode destination;
+        private readonly PacketParser parser;
 
+        public AT Command { get; set; }
+        public XBeeNode Destination { get; set; }
         public byte RemoteOptions { get; set; }
 
-        public RemoteATCommand(AT atCommand, XBeeNode destination)
+        public RemoteATCommand(PacketParser parser)
+        {
+            this.parser = parser;
+            this.CommandId = XBeeAPICommandId.REMOTE_AT_COMMAND_REQUEST;
+        }
+
+        public RemoteATCommand(AT command, XBeeNode destination)
         {
             this.CommandId = XBeeAPICommandId.REMOTE_AT_COMMAND_REQUEST;
-            this.atCommand = atCommand;
-            this.destination = destination;
+            this.Command = command;
+            this.Destination = destination;
         }
 
         public override byte[] ToByteArray()
@@ -28,12 +35,12 @@ namespace XBee.Frames
             stream.WriteByte((byte)CommandId);
             stream.WriteByte(FrameId);
 
-            stream.Write(destination.Address64.GetAddress(), 0, 8);
-            stream.Write(destination.Address16.GetAddress(), 0, 2);
+            stream.Write(Destination.Address64.GetAddress(), 0, 8);
+            stream.Write(Destination.Address16.GetAddress(), 0, 2);
 
             stream.WriteByte(RemoteOptions);
 
-            var cmd = ((ATAttr)atCommand.GetAttr()).ATCommand.ToCharArray();
+            var cmd = ((ATAttr)Command.GetAttr()).ATCommand.ToCharArray();
             stream.WriteByte((byte)cmd[0]);
             stream.WriteByte((byte)cmd[1]);
 
@@ -42,7 +49,16 @@ namespace XBee.Frames
 
         public override void Parse()
         {
-            throw new NotImplementedException();
+            this.FrameId = (byte) parser.ReadByte();
+
+            Destination = new XBeeNode { Address64 = parser.ReadAddress64(), Address16 = parser.ReadAddress16() };
+
+            RemoteOptions = (byte) parser.ReadByte();
+            Command = parser.ReadATCommand();
+
+            if (parser.HasMoreData()) {
+                Console.WriteLine("TODO: has data!");
+            }
         }
     }
 }
