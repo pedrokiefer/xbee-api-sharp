@@ -6,15 +6,15 @@ namespace XBee.Frames
 
     public class ATAttr : EnumAttribute
     {
-        public ATAttr(string ATCommand, string description)
+        public ATAttr(string atCommand, string description)
         {
-            this.ATCommand = ATCommand;
+            this.ATCommand = atCommand;
             this.Description = description;
         }
 
-        public ATAttr(string ATCommand, string description, ulong maxValue)
+        public ATAttr(string atCommand, string description, ulong maxValue)
         {
-            this.ATCommand = ATCommand;
+            this.ATCommand = atCommand;
             this.Description = description;
             this.MaximumValue = maxValue;
         }
