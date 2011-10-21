@@ -9,11 +9,11 @@ namespace XBee
     {
         public static XBeeAddress64 BROADCAST = new XBeeAddress64(0x000000000000FFFF);
         public static XBeeAddress64 ZNET_COORDINATOR = new XBeeAddress64(0);
-        private byte[] address;
+        private readonly byte[] address;
 
         public XBeeAddress64(long address)
         {
-            byte[] addressLittleEndian = BitConverter.GetBytes(address);
+            var addressLittleEndian = BitConverter.GetBytes(address);
             Array.Reverse(addressLittleEndian);
             this.address = addressLittleEndian;
         }
@@ -30,7 +30,7 @@ namespace XBee
             if ((obj == null) || (typeof(XBeeAddress64) != obj.GetType()))
                 return false;
 
-            XBeeAddress64 addr = (XBeeAddress64) obj;
+            var addr = (XBeeAddress64) obj;
 
             if (this.GetAddress().SequenceEqual(addr.GetAddress()))
                 return true;

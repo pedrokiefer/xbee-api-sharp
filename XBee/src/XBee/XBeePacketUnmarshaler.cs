@@ -55,7 +55,7 @@ namespace XBee
         public static XBeeFrame Unmarshal(MemoryStream dataStream)
         {
             XBeeFrame frame;
-            uint length = (uint) (dataStream.ReadByte() << 8 | dataStream.ReadByte());
+            var length = (uint) (dataStream.ReadByte() << 8 | dataStream.ReadByte());
 
             if ((length == 0) || (length > 0xFFFF))
                 throw new XBeeFrameException("Invalid Frame Lenght");
@@ -63,7 +63,7 @@ namespace XBee
             if (length != dataStream.Length - 2)
                 throw new XBeeFrameException("Invalid Frame Lenght");
 
-            XBeeAPICommandId cmd = (XBeeAPICommandId) dataStream.ReadByte();
+            var cmd = (XBeeAPICommandId) dataStream.ReadByte();
 
             if (framesMap.ContainsKey(cmd)) {
                 frame = (XBeeFrame) Activator.CreateInstance(framesMap[cmd]);

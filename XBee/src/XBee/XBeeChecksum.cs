@@ -8,7 +8,7 @@ namespace XBee
 {
     public class XBeeChecksum
     {
-        private static Logger logger = LogManager.GetCurrentClassLogger();
+        private static readonly Logger logger = LogManager.GetCurrentClassLogger();
 
         public static byte Calculate(byte[] data)
         {
