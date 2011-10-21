@@ -9,6 +9,7 @@ namespace XBee.Frames
 {
     public class ExplicitAddressingTransmit : XBeeFrame
     {
+        [Flags]
         public enum OptionValues : byte
         {
             DISABLE_ACK = 0x01,
@@ -18,6 +19,7 @@ namespace XBee.Frames
 
         private XBeeNode destination;
         private byte[] RFData;
+        private readonly PacketParser parser;
 
         public byte? SourceEndpoint { get; set; }
         public byte? DestinationEndpoint { get; set; }
@@ -26,6 +28,12 @@ namespace XBee.Frames
 
         public byte BroadcastRadius { get; set; }
         public OptionValues Options { get; set; }
+
+        public ExplicitAddressingTransmit(PacketParser parser)
+        {
+            this.parser = parser;
+            this.CommandId = XBeeAPICommandId.EXPLICIT_ADDR_REQUEST;
+        }
 
         public ExplicitAddressingTransmit(XBeeNode destination)
         {
@@ -38,7 +46,7 @@ namespace XBee.Frames
             this.DestinationEndpoint = null;
             this.ClusterId = null;
             this.ProfileId = null;
-            
+
             this.RFData = null;
         }
 
@@ -49,9 +57,9 @@ namespace XBee.Frames
 
         public override byte[] ToByteArray()
         {
-            MemoryStream stream = new MemoryStream();
+            var stream = new MemoryStream();
 
-            stream.WriteByte((byte)CommandId);
+            stream.WriteByte((byte) CommandId);
             stream.WriteByte(FrameId);
 
             stream.Write(destination.Address64.GetAddress(), 0, 8);
@@ -67,18 +75,18 @@ namespace XBee.Frames
 
             if (!ClusterId.HasValue)
                 throw new XBeeFrameException("Missing Cluster ID");
-            byte[] clusterIdMSB = BitConverter.GetBytes(ClusterId.Value);
-            Array.Reverse(clusterIdMSB);
-            stream.Write(clusterIdMSB, 0, 2);
+            var clusterIdMsb = BitConverter.GetBytes(ClusterId.Value);
+            Array.Reverse(clusterIdMsb);
+            stream.Write(clusterIdMsb, 0, 2);
 
             if (!ProfileId.HasValue)
                 throw new XBeeFrameException("Missing Profile ID");
-            byte[] profileIdMSB = BitConverter.GetBytes(ProfileId.Value);
-            Array.Reverse(profileIdMSB);
-            stream.Write(profileIdMSB, 0, 2);
+            var profileIdMsb = BitConverter.GetBytes(ProfileId.Value);
+            Array.Reverse(profileIdMsb);
+            stream.Write(profileIdMsb, 0, 2);
 
-            stream.WriteByte((byte)BroadcastRadius);
-            stream.WriteByte((byte)Options);
+            stream.WriteByte(BroadcastRadius);
+            stream.WriteByte((byte) Options);
 
             if (this.RFData != null) {
                 stream.Write(this.RFData, 0, this.RFData.Length);
@@ -87,9 +95,24 @@ namespace XBee.Frames
             return stream.ToArray();
         }
 
-        public override void Parse(MemoryStream data)
+        public override void Parse()
         {
-            throw new NotImplementedException();
+            this.FrameId = (byte) parser.ReadByte();
+
+            destination = new XBeeNode { Address64 = parser.ReadAddress64(), Address16 = parser.ReadAddress16() };
+
+            SourceEndpoint = (byte?) parser.ReadByte();
+            DestinationEndpoint = (byte?) parser.ReadByte();
+            ClusterId = (UInt16?) parser.ReadUInt16();
+            ProfileId = (UInt16?) parser.ReadUInt16();
+
+            BroadcastRadius = (byte) parser.ReadByte();
+            Options = (OptionValues) parser.ReadByte();
+
+            if (parser.HasMoreData()) {
+                Console.WriteLine("TODO: has data!");
+            }
         }
     }
 }
+

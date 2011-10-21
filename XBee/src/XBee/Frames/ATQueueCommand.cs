@@ -2,7 +2,6 @@
 using System.Collections.Generic;
 using System.Linq;
 using System.Text;
-using System.IO;
 
 namespace XBee.Frames
 {
@@ -13,7 +12,7 @@ namespace XBee.Frames
             this.CommandId = XBeeAPICommandId.AT_COMMAND_QUEUE_REQUEST;
         }
 
-        public override void Parse(MemoryStream data)
+        public override void Parse()
         {
             throw new NotImplementedException();
         }

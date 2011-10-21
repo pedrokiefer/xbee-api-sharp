@@ -2,12 +2,21 @@
 using System.Collections.Generic;
 using System.Linq;
 using System.Text;
-using System.IO;
 
 namespace XBee.Frames
 {
     public class CreateSourceRoute : XBeeFrame
     {
+
+        private XBeeNode destination;
+        private readonly PacketParser parser;
+
+        public CreateSourceRoute(PacketParser parser)
+        {
+            this.parser = parser;
+            this.CommandId = XBeeAPICommandId.CREATE_SOURCE_ROUTE;
+        }
+
         public CreateSourceRoute()
         {
             this.CommandId = XBeeAPICommandId.CREATE_SOURCE_ROUTE;
@@ -18,9 +27,10 @@ namespace XBee.Frames
             return new byte[] { };
         }
 
-        public override void Parse(MemoryStream data)
+        public override void Parse()
         {
-            throw new NotImplementedException();
+            destination = new XBeeNode { Address64 = parser.ReadAddress64(), Address16 = parser.ReadAddress16() };
+
         }
     }
 }

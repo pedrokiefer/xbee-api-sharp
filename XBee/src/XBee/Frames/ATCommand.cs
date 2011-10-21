@@ -13,6 +13,7 @@ namespace XBee.Frames
         private AT atCommand;
         private bool hasValue;
         private long value;
+        private readonly PacketParser parser;
 
         public AT Command
         {
@@ -20,8 +21,9 @@ namespace XBee.Frames
             set { this.atCommand = value; }
         }
 
-        public ATCommand()
+        public ATCommand(PacketParser parser)
         {
+            this.parser = parser;
             this.value = 0;
             this.hasValue = false;
             this.CommandId = XBeeAPICommandId.AT_COMMAND_REQUEST;
@@ -60,16 +62,13 @@ namespace XBee.Frames
             return stream.ToArray();
         }
 
-        public override void Parse(MemoryStream data)
+        public override void Parse()
         {
-            var cmd = new char[2];
-            cmd[0] = (char) data.ReadByte();
-            cmd[1] = (char) data.ReadByte();
+            this.FrameId = (byte) parser.ReadByte();
+            this.atCommand = parser.ReadATCommand();
 
-            this.atCommand = ATUtil.Parse(new String(cmd));
-
-            if (data.Position != data.Length) {
-                Console.WriteLine("has data! length = {0} pos = {1}", data.Length, data.Position);
+            if (parser.HasMoreData()) {
+                Console.WriteLine("TODO: has data!");
             }
         }
     }

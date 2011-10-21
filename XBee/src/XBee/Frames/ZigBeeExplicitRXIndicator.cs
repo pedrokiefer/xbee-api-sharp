@@ -2,11 +2,10 @@
 using System.Collections.Generic;
 using System.Linq;
 using System.Text;
-using System.IO;
 
 namespace XBee.Frames
 {
-     public class ZigBeeExplicitRXIndicator : XBeeFrame
+    public class ZigBeeExplicitRXIndicator : XBeeFrame
     {
         public ZigBeeExplicitRXIndicator()
         {
@@ -18,7 +17,7 @@ namespace XBee.Frames
             return new byte[] { };
         }
 
-        public override void Parse(MemoryStream data)
+        public override void Parse()
         {
             throw new NotImplementedException();
         }
