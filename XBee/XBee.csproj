@@ -54,6 +54,7 @@
     <Compile Include="src\XBee\Frames\ModemStatus.cs" />
     <Compile Include="src\XBee\Frames\NodeIdentification.cs" />
     <Compile Include="src\XBee\Frames\OverAirUpdateStatus.cs" />
+    <Compile Include="src\XBee\Frames\ReceiveOptionsType.cs" />
     <Compile Include="src\XBee\Frames\RemoteATCommand.cs" />
     <Compile Include="src\XBee\Frames\RemoteCommandResponse.cs" />
     <Compile Include="src\XBee\Frames\RouteRecordIndicator.cs" />
@@ -63,6 +64,7 @@
     <Compile Include="src\XBee\Frames\ZigBeeIODataSample.cs" />
     <Compile Include="src\XBee\Frames\ZigBeeReceivePacket.cs" />
     <Compile Include="src\XBee\Frames\ZigBeeTransmitStatus.cs" />
+    <Compile Include="src\XBee\PacketParser.cs" />
     <Compile Include="src\XBee\SerialConnection.cs" />
     <Compile Include="src\XBee\Utils\ByteUtils.cs" />
     <Compile Include="src\XBee\Utils\EnumAttribute.cs" />
