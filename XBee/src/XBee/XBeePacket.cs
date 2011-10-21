@@ -3,11 +3,12 @@
     using System;
     using System.Collections.Generic;
 
-    public enum XBeeSpecialBytes : byte {
-                START_BYTE =0x7e, 
-                ESCAPE_BYTE = 0x7d, 
-                XON_BYTE = 0x11,
-                XOFF_BYTE = 0x13
+    public enum XBeeSpecialBytes : byte
+    {
+        START_BYTE = 0x7E,
+        ESCAPE_BYTE = 0x7D,
+        XON_BYTE = 0x11,
+        XOFF_BYTE = 0x13
     };
 
     public class XBeePacket
@@ -31,9 +32,11 @@
 
             data.AddLast(packetLength[0]);
             data.AddLast(packetLength[1]);
+
             foreach (byte b in frameData) {
                 data.AddLast(b);
             }
+
             data.AddLast(XBeeChecksum.Calculate(frameData));
 
             packetData = new byte[data.Count];
