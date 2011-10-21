@@ -2,6 +2,7 @@
 {
     using System;
     using System.Collections.Generic;
+    using System.IO;
 
     public enum XBeeSpecialBytes : byte
     {
@@ -13,7 +14,7 @@
 
     public class XBeePacket
     {
-        private byte[] frameData;
+        private readonly byte[] frameData;
         private byte[] packetData;
 
         public XBeePacket(byte[] frameData)
@@ -23,28 +24,21 @@
 
         public void Assemble()
         {
-            LinkedList<byte> data = new LinkedList<byte>();
+            var data = new MemoryStream();
 
-            data.AddLast((byte) XBeeSpecialBytes.START_BYTE);
+            data.WriteByte((byte) XBeeSpecialBytes.START_BYTE);
 
-            byte[] packetLength = BitConverter.GetBytes(frameData.Length);
+            var packetLength = BitConverter.GetBytes(frameData.Length);
             Array.Reverse(packetLength);
 
-            data.AddLast(packetLength[0]);
-            data.AddLast(packetLength[1]);
+            data.WriteByte(packetLength[0]);
+            data.WriteByte(packetLength[1]);
 
-            foreach (byte b in frameData) {
-                data.AddLast(b);
-            }
+            data.Write(frameData, 0, frameData.Length);
 
-            data.AddLast(XBeeChecksum.Calculate(frameData));
+            data.WriteByte(XBeeChecksum.Calculate(frameData));
 
-            packetData = new byte[data.Count];
-            int i = 0;
-            foreach (byte b in data) {
-                packetData[i] = b;
-                i++;
-            }
+            packetData = data.ToArray();
         }
 
     }
