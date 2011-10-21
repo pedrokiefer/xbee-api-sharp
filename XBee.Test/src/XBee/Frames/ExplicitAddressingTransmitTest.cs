@@ -33,6 +33,29 @@ namespace XBee.Test.Frames
         }
 
         [Test]
+        public void TestExplicitAddressingRequestBroadcastRadiusOptionsParse()
+        {
+            var packet = new byte[]
+                {
+                    0x00, 0x14, 0x11, 0x01, 0x00, 0x00, 0x00, 0x00, 0x00, 0x00, 0xFF, 0xFF, 0xFF, 0xFE, 0xA0, 0xA1, 0x15, 0x54, 0xC1,
+                    0x05, 0x02, 0x41
+                };
+
+            var frame = XBeePacketUnmarshaler.Unmarshal(packet);
+            Assert.That(frame, Is.InstanceOf<ExplicitAddressingTransmit>());
+            var cmd = (ExplicitAddressingTransmit) frame;
+            Assert.That(cmd.FrameId, Is.EqualTo(0x01));
+
+            Assert.That(cmd.BroadcastRadius, Is.EqualTo(2));
+            Assert.That(cmd.Options, Is.EqualTo(ExplicitAddressingTransmit.OptionValues.DISABLE_ACK | ExplicitAddressingTransmit.OptionValues.EXTENDED_TIMEOUT));
+
+            Assert.That(cmd.SourceEndpoint, Is.EqualTo(0xA0));
+            Assert.That(cmd.DestinationEndpoint, Is.EqualTo(0xA1));
+            Assert.That(cmd.ClusterId, Is.EqualTo(0x1554));
+            Assert.That(cmd.ProfileId, Is.EqualTo(0xC105));
+        }
+
+        [Test]
         public void TestExplicitAddressingRequestBroadcastRadiusOptionsData()
         {
             XBeeNode broadcast = new XBeeNode();
