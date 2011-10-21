@@ -11,8 +11,8 @@ namespace XBee
 {
     public class XBeePacketUnmarshaler
     {
-        private static Logger logger = LogManager.GetCurrentClassLogger();
-        private static Dictionary<XBeeAPICommandId, Type> framesMap = createFramesMap();
+        private static readonly Logger logger = LogManager.GetCurrentClassLogger();
+        private static readonly Dictionary<XBeeAPICommandId, Type> framesMap = createFramesMap();
 
         public static XBeeFrame Unmarshal(XBeePacket packet)
         {
@@ -21,33 +21,34 @@ namespace XBee
 
         private static Dictionary<XBeeAPICommandId, Type> createFramesMap()
         {
-            Dictionary<XBeeAPICommandId, Type> map = new Dictionary<XBeeAPICommandId, Type>();
-
-            map.Add(XBeeAPICommandId.AT_COMMAND_REQUEST, typeof(ATCommand));
-            map.Add(XBeeAPICommandId.AT_COMMAND_QUEUE_REQUEST, typeof(ATQueueCommand));
-            map.Add(XBeeAPICommandId.TRANSMIT_DATA_REQUEST, typeof(TransmitDataRequest));
-            map.Add(XBeeAPICommandId.EXPLICIT_ADDR_REQUEST, typeof(ExplicitAddressingTransmit));
-            map.Add(XBeeAPICommandId.REMOTE_AT_COMMAND_REQUEST, typeof(RemoteATCommand));
-            map.Add(XBeeAPICommandId.CREATE_SOURCE_ROUTE, typeof(CreateSourceRoute));
-            map.Add(XBeeAPICommandId.AT_COMMAND_RESPONSE, typeof(ATCommandResponse));
-            map.Add(XBeeAPICommandId.MODEM_STATUS_RESPONSE, typeof(ModemStatus));
-            map.Add(XBeeAPICommandId.TRANSMIT_STATUS_RESPONSE, typeof(ZigBeeTransmitStatus));
-            map.Add(XBeeAPICommandId.RECEIVE_PACKET_RESPONSE, typeof(ZigBeeReceivePacket));
-            map.Add(XBeeAPICommandId.EXPLICIT_RX_INDICATOR_RESPONSE, typeof(ZigBeeExplicitRXIndicator));
-            map.Add(XBeeAPICommandId.IO_SAMPLE_RESPONSE, typeof(ZigBeeIODataSample));
-            map.Add(XBeeAPICommandId.SENSOR_READ_INDICATOR, typeof(SensorReadIndicator));
-            map.Add(XBeeAPICommandId.NODE_IDENTIFIER_RESPONSE, typeof(NodeIdentification));
-            map.Add(XBeeAPICommandId.REMOTE_AT_COMMAND_RESPONSE, typeof(RemoteCommandResponse));
-            map.Add(XBeeAPICommandId.FIRMWARE_UPDATE_STATUS, typeof(OverAirUpdateStatus));
-            map.Add(XBeeAPICommandId.ROUTE_RECORD_INDICATOR, typeof(RouteRecordIndicator));
-            map.Add(XBeeAPICommandId.MANYTOONE_ROUTE_REQUEST_INDICATOR, typeof(ManyToOneRouteRequest));
+            var map = new Dictionary<XBeeAPICommandId, Type>
+                {
+                    {XBeeAPICommandId.AT_COMMAND_REQUEST, typeof (ATCommand)},
+                    {XBeeAPICommandId.AT_COMMAND_QUEUE_REQUEST, typeof (ATQueueCommand)},
+                    {XBeeAPICommandId.TRANSMIT_DATA_REQUEST, typeof (TransmitDataRequest)},
+                    {XBeeAPICommandId.EXPLICIT_ADDR_REQUEST, typeof (ExplicitAddressingTransmit)},
+                    {XBeeAPICommandId.REMOTE_AT_COMMAND_REQUEST, typeof (RemoteATCommand)},
+                    {XBeeAPICommandId.CREATE_SOURCE_ROUTE, typeof (CreateSourceRoute)},
+                    {XBeeAPICommandId.AT_COMMAND_RESPONSE, typeof (ATCommandResponse)},
+                    {XBeeAPICommandId.MODEM_STATUS_RESPONSE, typeof (ModemStatus)},
+                    {XBeeAPICommandId.TRANSMIT_STATUS_RESPONSE, typeof (ZigBeeTransmitStatus)},
+                    {XBeeAPICommandId.RECEIVE_PACKET_RESPONSE, typeof (ZigBeeReceivePacket)},
+                    {XBeeAPICommandId.EXPLICIT_RX_INDICATOR_RESPONSE, typeof (ZigBeeExplicitRXIndicator)},
+                    {XBeeAPICommandId.IO_SAMPLE_RESPONSE, typeof (ZigBeeIODataSample)},
+                    {XBeeAPICommandId.SENSOR_READ_INDICATOR, typeof (SensorReadIndicator)},
+                    {XBeeAPICommandId.NODE_IDENTIFIER_RESPONSE, typeof (NodeIdentification)},
+                    {XBeeAPICommandId.REMOTE_AT_COMMAND_RESPONSE, typeof (RemoteCommandResponse)},
+                    {XBeeAPICommandId.FIRMWARE_UPDATE_STATUS, typeof (OverAirUpdateStatus)},
+                    {XBeeAPICommandId.ROUTE_RECORD_INDICATOR, typeof (RouteRecordIndicator)},
+                    {XBeeAPICommandId.MANYTOONE_ROUTE_REQUEST_INDICATOR, typeof (ManyToOneRouteRequest)}
+                };
 
             return map;
         }
 
         public static XBeeFrame Unmarshal(byte[] packetData)
         {
-            MemoryStream dataStream = new MemoryStream(packetData);
+            var dataStream = new MemoryStream(packetData);
             return Unmarshal(dataStream);
         }
 
@@ -69,7 +70,6 @@ namespace XBee
 
                 frame.FrameId = (byte) dataStream.ReadByte();
                 frame.Parse(dataStream);
-
             } else {
                 throw new XBeeFrameException(String.Format("Unsupported Command Id 0x{0:X2}", cmd));
             }
@@ -77,16 +77,16 @@ namespace XBee
             return frame;
         }
 
-        public static void RegisterResponseHandler(XBeeAPICommandId commandId, Type typeHandler)
+        public static void RegisterFrameHandler(XBeeAPICommandId commandId, Type typeHandler)
         {
             if (!typeHandler.IsSubclassOf(typeof(XBeeFrame)))
                 throw new XBeeException("Invalid Frame Handler");
 
             if (framesMap.ContainsKey(commandId)) {
-                logger.Info(String.Format("Overriding Frame Handler: {0} with {1} for API Id: 0x{2:x2}", framesMap[commandId].Name, typeHandler.Name, (byte)commandId));
+                logger.Info(String.Format("Overriding Frame Handler: {0} with {1} for API Id: 0x{2:x2}", framesMap[commandId].Name, typeHandler.Name, (byte) commandId));
                 framesMap[commandId] = typeHandler;
             } else {
-                logger.Info(String.Format("Adding Frame Handler: {0} for API Id: 0x{1:x2}", typeHandler.Name, (byte)commandId));
+                logger.Info(String.Format("Adding Frame Handler: {0} for API Id: 0x{1:x2}", typeHandler.Name, (byte) commandId));
                 framesMap.Add(commandId, typeHandler);
             }
         }

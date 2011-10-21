@@ -38,13 +38,13 @@ namespace XBee.Test
         [ExpectedException(typeof(XBeeException), ExpectedMessage = "Invalid Frame Handler")]
         public void TestXBeeUnmarshalerRegisterWrong()
         {
-            XBeePacketUnmarshaler.RegisterResponseHandler(XBeeAPICommandId.REMOTE_AT_COMMAND_REQUEST, typeof(NotXBeeFrame));
+            XBeePacketUnmarshaler.RegisterFrameHandler(XBeeAPICommandId.REMOTE_AT_COMMAND_REQUEST, typeof(NotXBeeFrame));
         }
 
         [Test]
         public void TestXBeeUnmarshalerRegister()
         {
-            XBeePacketUnmarshaler.RegisterResponseHandler(XBeeAPICommandId.UNKNOWN, typeof(XBeeUnknownFrame));
+            XBeePacketUnmarshaler.RegisterFrameHandler(XBeeAPICommandId.UNKNOWN, typeof(XBeeUnknownFrame));
         }
 
         [Test]
