@@ -11,7 +11,7 @@ namespace XBee
         public static XBeeAddress64 ZNET_COORDINATOR = new XBeeAddress64(0);
         private readonly byte[] address;
 
-        public XBeeAddress64(long address)
+        public XBeeAddress64(ulong address)
         {
             var addressLittleEndian = BitConverter.GetBytes(address);
             Array.Reverse(addressLittleEndian);
@@ -27,15 +27,13 @@ namespace XBee
         {
             if (obj == this)
                 return true;
+
             if ((obj == null) || (typeof(XBeeAddress64) != obj.GetType()))
                 return false;
 
             var addr = (XBeeAddress64) obj;
 
-            if (this.GetAddress().SequenceEqual(addr.GetAddress()))
-                return true;
-
-            return false;
+            return this.GetAddress().SequenceEqual(addr.GetAddress());
         }
 
         public override int GetHashCode()
