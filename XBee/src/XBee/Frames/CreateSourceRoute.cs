@@ -10,7 +10,7 @@ namespace XBee.Frames
     {
         public CreateSourceRoute()
         {
-            this.commandId = XBeeAPICommandId.CREATE_SOURCE_ROUTE;
+            this.CommandId = XBeeAPICommandId.CREATE_SOURCE_ROUTE;
         }
 
         public override byte[] ToByteArray()

@@ -24,7 +24,7 @@ namespace XBee.Frames
         {
             this.value = 0;
             this.hasValue = false;
-            this.commandId = XBeeAPICommandId.AT_COMMAND_REQUEST;
+            this.CommandId = XBeeAPICommandId.AT_COMMAND_REQUEST;
         }
 
         public ATCommand(AT atCommand)
@@ -32,7 +32,7 @@ namespace XBee.Frames
             this.atCommand = atCommand;
             this.value = 0;
             this.hasValue = false;
-            this.commandId = XBeeAPICommandId.AT_COMMAND_REQUEST;
+            this.CommandId = XBeeAPICommandId.AT_COMMAND_REQUEST;
         }
 
         public void SetValue(long value)
@@ -45,7 +45,7 @@ namespace XBee.Frames
         {
             MemoryStream stream = new MemoryStream();
 
-            stream.WriteByte((byte) commandId);
+            stream.WriteByte((byte) CommandId);
             stream.WriteByte(FrameId);
 
             var cmd = ((ATAttr) atCommand.GetAttr()).ATCommand.ToCharArray();

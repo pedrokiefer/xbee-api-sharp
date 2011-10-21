@@ -10,7 +10,7 @@ namespace XBee.Frames
     {
         public ATQueueCommand(AT atCommand) : base(atCommand)
         {
-            this.commandId = XBeeAPICommandId.AT_COMMAND_QUEUE_REQUEST;
+            this.CommandId = XBeeAPICommandId.AT_COMMAND_QUEUE_REQUEST;
         }
 
         public override void Parse(MemoryStream data)

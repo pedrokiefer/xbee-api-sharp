@@ -10,7 +10,7 @@ namespace XBee.Frames
     {
         public ManyToOneRouteRequest()
         {
-            this.commandId = XBeeAPICommandId.MANYTOONE_ROUTE_REQUEST_INDICATOR;
+            this.CommandId = XBeeAPICommandId.MANYTOONE_ROUTE_REQUEST_INDICATOR;
         }
 
         public override byte[] ToByteArray()

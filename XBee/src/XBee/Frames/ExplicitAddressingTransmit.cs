@@ -29,7 +29,7 @@ namespace XBee.Frames
 
         public ExplicitAddressingTransmit(XBeeNode destination)
         {
-            this.commandId = XBeeAPICommandId.EXPLICIT_ADDR_REQUEST;
+            this.CommandId = XBeeAPICommandId.EXPLICIT_ADDR_REQUEST;
             this.destination = destination;
             this.BroadcastRadius = 0;
             this.Options = 0;
@@ -51,7 +51,7 @@ namespace XBee.Frames
         {
             MemoryStream stream = new MemoryStream();
 
-            stream.WriteByte((byte)commandId);
+            stream.WriteByte((byte)CommandId);
             stream.WriteByte(FrameId);
 
             stream.Write(destination.Address64.GetAddress(), 0, 8);

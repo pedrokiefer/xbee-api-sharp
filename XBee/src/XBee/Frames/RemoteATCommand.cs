@@ -16,7 +16,7 @@ namespace XBee.Frames
 
         public RemoteATCommand(AT atCommand, XBeeNode destination)
         {
-            this.commandId = XBeeAPICommandId.REMOTE_AT_COMMAND_REQUEST;
+            this.CommandId = XBeeAPICommandId.REMOTE_AT_COMMAND_REQUEST;
             this.atCommand = atCommand;
             this.destination = destination;
         }
@@ -25,7 +25,7 @@ namespace XBee.Frames
         {
             MemoryStream stream = new MemoryStream();
 
-            stream.WriteByte((byte)commandId);
+            stream.WriteByte((byte)CommandId);
             stream.WriteByte(FrameId);
 
             stream.Write(destination.Address64.GetAddress(), 0, 8);

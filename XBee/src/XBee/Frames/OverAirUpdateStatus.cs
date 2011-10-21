@@ -10,7 +10,7 @@ namespace XBee.Frames
     {
         public OverAirUpdateStatus()
         {
-            this.commandId = XBeeAPICommandId.FIRMWARE_UPDATE_STATUS;
+            this.CommandId = XBeeAPICommandId.FIRMWARE_UPDATE_STATUS;
         }
 
         public override byte[] ToByteArray()

@@ -10,7 +10,7 @@ namespace XBee.Frames
     {
         public ZigBeeIODataSample()
         {
-            this.commandId = XBeeAPICommandId.IO_SAMPLE_RESPONSE;
+            this.CommandId = XBeeAPICommandId.IO_SAMPLE_RESPONSE;
         }
 
         public override byte[] ToByteArray()

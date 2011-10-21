@@ -10,7 +10,7 @@ namespace XBee.Frames
     {
         public SensorReadIndicator()
         {
-            this.commandId = XBeeAPICommandId.SENSOR_READ_INDICATOR;
+            this.CommandId = XBeeAPICommandId.SENSOR_READ_INDICATOR;
         }
 
         public override byte[] ToByteArray()

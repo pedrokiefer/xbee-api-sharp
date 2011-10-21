@@ -10,7 +10,7 @@ namespace XBee.Frames
     {
         public ZigBeeReceivePacket()
         {
-            this.commandId = XBeeAPICommandId.RECEIVE_PACKET_RESPONSE;
+            this.CommandId = XBeeAPICommandId.RECEIVE_PACKET_RESPONSE;
         }
 
         public override byte[] ToByteArray()

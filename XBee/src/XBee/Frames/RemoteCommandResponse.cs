@@ -10,7 +10,7 @@ namespace XBee.Frames
     {
         public RemoteCommandResponse()
         {
-            this.commandId = XBeeAPICommandId.REMOTE_AT_COMMAND_RESPONSE;
+            this.CommandId = XBeeAPICommandId.REMOTE_AT_COMMAND_RESPONSE;
         }
 
         public override byte[] ToByteArray()

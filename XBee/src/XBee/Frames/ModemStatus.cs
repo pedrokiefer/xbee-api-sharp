@@ -10,7 +10,7 @@ namespace XBee.Frames
     {
         public ModemStatus()
         {
-            this.commandId = XBeeAPICommandId.MODEM_STATUS_RESPONSE;
+            this.CommandId = XBeeAPICommandId.MODEM_STATUS_RESPONSE;
         }
 
         public override byte[] ToByteArray()

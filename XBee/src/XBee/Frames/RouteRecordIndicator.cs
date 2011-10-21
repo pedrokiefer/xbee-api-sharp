@@ -10,7 +10,7 @@ namespace XBee.Frames
     {
         public RouteRecordIndicator()
         {
-            this.commandId = XBeeAPICommandId.ROUTE_RECORD_INDICATOR;
+            this.CommandId = XBeeAPICommandId.ROUTE_RECORD_INDICATOR;
         }
 
         public override byte[] ToByteArray()

@@ -10,7 +10,7 @@ namespace XBee.Frames
     {
         public ZigBeeTransmitStatus()
         {
-            this.commandId = XBeeAPICommandId.TRANSMIT_STATUS_RESPONSE;
+            this.CommandId = XBeeAPICommandId.TRANSMIT_STATUS_RESPONSE;
         }
 
         public override byte[] ToByteArray()

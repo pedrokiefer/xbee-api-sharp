@@ -10,7 +10,7 @@ namespace XBee.Frames
     {
         public NodeIdentification()
         {
-            this.commandId = XBeeAPICommandId.NODE_IDENTIFIER_RESPONSE;
+            this.CommandId = XBeeAPICommandId.NODE_IDENTIFIER_RESPONSE;
         }
 
         public override byte[] ToByteArray()
