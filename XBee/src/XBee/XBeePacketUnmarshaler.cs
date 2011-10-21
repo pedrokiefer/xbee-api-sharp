@@ -67,8 +67,6 @@ namespace XBee
 
             if (framesMap.ContainsKey(cmd)) {
                 frame = (XBeeFrame) Activator.CreateInstance(framesMap[cmd]);
-
-                frame.FrameId = (byte) dataStream.ReadByte();
                 frame.Parse(dataStream);
             } else {
                 throw new XBeeFrameException(String.Format("Unsupported Command Id 0x{0:X2}", cmd));
