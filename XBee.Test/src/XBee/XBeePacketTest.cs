@@ -4,7 +4,7 @@ using System.Linq;
 using System.Text;
 using NUnit.Framework;
 
-namespace XBee.Test.src.XBee
+namespace XBee.Test
 {
     [TestFixture]
     class XBeePacketTest
@@ -60,7 +60,7 @@ namespace XBee.Test.src.XBee
         [Test]
         public void ATCommandResponseTest()
         {
-            byte[] atCommandResponseSample = { 0x7E, 0x00, 0x05, 0x88, 0x01, 0x42, 0x4, 0x00, 0xF0 };
+            byte[] atCommandResponseSample = { 0x7E, 0x00, 0x05, 0x88, 0x01, 0x42, 0x44, 0x00, 0xF0 };
         }
 
         [Test]

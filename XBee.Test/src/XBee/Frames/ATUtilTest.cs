@@ -5,7 +5,7 @@ using System.Text;
 using NUnit.Framework;
 using XBee.Frames;
 
-namespace XBee.Test.src.XBee.Frames
+namespace XBee.Test.Frames
 {
     [TestFixture]
     class ATUtilTest

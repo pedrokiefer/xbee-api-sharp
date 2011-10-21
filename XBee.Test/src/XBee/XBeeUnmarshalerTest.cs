@@ -2,7 +2,6 @@
 using System.Collections.Generic;
 using System.Linq;
 using System.Text;
-using System.IO;
 using NUnit.Framework;
 using XBee;
 using XBee.Frames;
@@ -28,7 +27,7 @@ namespace XBee.Test
                 return new byte[] { };
             }
 
-            public override void Parse(MemoryStream data)
+            public override void Parse()
             {
                 throw new NotImplementedException();
             }
@@ -59,9 +58,9 @@ namespace XBee.Test
         {
             var packetData = new byte[] { 0x00, 0x04, 0x08, 0x01, (byte) 'D', (byte) 'H' };
 
-            XBeeFrame frame = XBeePacketUnmarshaler.Unmarshal(packetData);
+            var frame = XBeePacketUnmarshaler.Unmarshal(packetData);
             Assert.That(frame, Is.InstanceOf<ATCommand>());
-            ATCommand cmd = (ATCommand) frame;
+            var cmd = (ATCommand) frame;
             Assert.That(cmd.FrameId, Is.EqualTo(0x01));
             Assert.That(cmd.Command, Is.EqualTo(AT.DH));
         }
@@ -71,9 +70,9 @@ namespace XBee.Test
         {
             var packetData = new byte[] { 0x00, 0x08, 0x08, 0x01, (byte) 'D', (byte) 'H', 0x11, 0x22, 0x33, 0x00 };
 
-            XBeeFrame frame = XBeePacketUnmarshaler.Unmarshal(packetData);
+            var frame = XBeePacketUnmarshaler.Unmarshal(packetData);
             Assert.That(frame, Is.InstanceOf<ATCommand>());
-            ATCommand cmd = (ATCommand) frame;
+            var cmd = (ATCommand) frame;
             Assert.That(cmd.FrameId, Is.EqualTo(0x01));
             Assert.That(cmd.Command, Is.EqualTo(AT.DH));
         }

@@ -14,11 +14,11 @@ namespace XBee.Test.Frames
         [Test]
         public void TestRemoteATCommandND()
         {
-            XBeeNode broadcast = new XBeeNode();
+            var broadcast = new XBeeNode();
             broadcast.Address16 = XBeeAddress16.ZNET_BROADCAST;
             broadcast.Address64 = XBeeAddress64.BROADCAST;
 
-            RemoteATCommand cmd = new RemoteATCommand(AT.ND, broadcast);
+            var cmd = new RemoteATCommand(AT.ND, broadcast);
             cmd.FrameId = 1;
 
             Assert.AreEqual(new byte[] { 0x17, 0x01, 0x00, 0x00, 0x00, 0x00, 0x00, 0x00, 0xFF, 0xFF, 0xFF, 0xFE, 0x00, (byte)'N', (byte)'D' }, cmd.ToByteArray());
@@ -27,11 +27,11 @@ namespace XBee.Test.Frames
         [Test]
         public void TestRemoteATCommandDH()
         {
-            XBeeNode broadcast = new XBeeNode();
+            var broadcast = new XBeeNode();
             broadcast.Address16 = XBeeAddress16.ZNET_BROADCAST;
             broadcast.Address64 = XBeeAddress64.BROADCAST;
 
-            RemoteATCommand cmd = new RemoteATCommand(AT.DH, broadcast);
+            var cmd = new RemoteATCommand(AT.DH, broadcast);
             cmd.FrameId = 1;
 
             Assert.AreEqual(new byte[] { 0x17, 0x01, 0x00, 0x00, 0x00, 0x00, 0x00, 0x00, 0xFF, 0xFF, 0xFF, 0xFE, 0x00, (byte)'D', (byte)'H', 0x11, 0x22, 0x33, 0x00 }, cmd.ToByteArray());
