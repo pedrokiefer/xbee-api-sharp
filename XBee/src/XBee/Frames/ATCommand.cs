@@ -46,7 +46,7 @@ namespace XBee.Frames
             stream.WriteByte((byte) CommandId);
             stream.WriteByte(FrameId);
 
-            var cmd = ((ATAttr) atCommand.GetAttr()).ATCommand.ToCharArray();
+            var cmd = ((ATAttribute) atCommand.GetAttr()).ATCommand.ToCharArray();
             stream.WriteByte((byte) cmd[0]);
             stream.WriteByte((byte) cmd[1]);
 

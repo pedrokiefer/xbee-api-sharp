@@ -48,7 +48,7 @@ namespace XBee.Frames
 
             stream.WriteByte(RemoteOptions);
 
-            var cmd = ((ATAttr)Command.GetAttr()).ATCommand.ToCharArray();
+            var cmd = ((ATAttribute)Command.GetAttr()).ATCommand.ToCharArray();
             stream.WriteByte((byte)cmd[0]);
             stream.WriteByte((byte)cmd[1]);
 
