@@ -18,7 +18,7 @@ namespace XBee.Frames
         }
 
         private XBeeNode destination;
-        private byte[] RFData;
+        private byte[] rfData;
         private readonly PacketParser parser;
 
         public byte? SourceEndpoint { get; set; }
@@ -32,27 +32,27 @@ namespace XBee.Frames
         public ExplicitAddressingTransmit(PacketParser parser)
         {
             this.parser = parser;
-            this.CommandId = XBeeAPICommandId.EXPLICIT_ADDR_REQUEST;
+            CommandId = XBeeAPICommandId.EXPLICIT_ADDR_REQUEST;
         }
 
         public ExplicitAddressingTransmit(XBeeNode destination)
         {
-            this.CommandId = XBeeAPICommandId.EXPLICIT_ADDR_REQUEST;
+            CommandId = XBeeAPICommandId.EXPLICIT_ADDR_REQUEST;
             this.destination = destination;
-            this.BroadcastRadius = 0;
-            this.Options = 0;
+            BroadcastRadius = 0;
+            Options = 0;
 
-            this.SourceEndpoint = null;
-            this.DestinationEndpoint = null;
-            this.ClusterId = null;
-            this.ProfileId = null;
+            SourceEndpoint = null;
+            DestinationEndpoint = null;
+            ClusterId = null;
+            ProfileId = null;
 
-            this.RFData = null;
+            rfData = null;
         }
 
-        public void SetRFData(byte[] RFData)
+        public void SetRFData(byte[] rfData)
         {
-            this.RFData = RFData;
+            this.rfData = rfData;
         }
 
         public override byte[] ToByteArray()
@@ -88,8 +88,8 @@ namespace XBee.Frames
             stream.WriteByte(BroadcastRadius);
             stream.WriteByte((byte) Options);
 
-            if (this.RFData != null) {
-                stream.Write(this.RFData, 0, this.RFData.Length);
+            if (this.rfData != null) {
+                stream.Write(this.rfData, 0, this.rfData.Length);
             }
 
             return stream.ToArray();

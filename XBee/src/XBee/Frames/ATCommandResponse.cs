@@ -1,6 +1,4 @@
 ﻿using System;
-using System.Collections.Generic;
-using System.Linq;
 using System.Text;
 
 namespace XBee.Frames
@@ -15,12 +13,12 @@ namespace XBee.Frames
         public ATCommandResponse(PacketParser parser)
         {
             this.parser = parser;
-            this.CommandId = XBeeAPICommandId.AT_COMMAND_RESPONSE;
+            CommandId = XBeeAPICommandId.AT_COMMAND_RESPONSE;
         }
 
         public ATCommandResponse()
         {
-            this.CommandId = XBeeAPICommandId.AT_COMMAND_RESPONSE;
+            CommandId = XBeeAPICommandId.AT_COMMAND_RESPONSE;
         }
 
         public override byte[] ToByteArray()
@@ -30,9 +28,9 @@ namespace XBee.Frames
 
         public override void Parse()
         {
-            this.FrameId = (byte) parser.ReadByte();
+            FrameId = (byte)parser.ReadByte();
             Command = parser.ReadATCommand();
-            CommandStatus = (byte) parser.ReadByte();
+            CommandStatus = (byte)parser.ReadByte();
 
             if (parser.HasMoreData()) {
                 Console.WriteLine("has data!");

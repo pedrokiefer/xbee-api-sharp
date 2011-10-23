@@ -60,8 +60,8 @@ namespace XBee.Frames
 
         public override void Parse()
         {
-            this.FrameId = (byte) parser.ReadByte();
-            this.atCommand = parser.ReadATCommand();
+            FrameId = (byte) parser.ReadByte();
+            atCommand = parser.ReadATCommand();
 
             if (parser.HasMoreData()) {
                 Console.WriteLine("TODO: has data!");

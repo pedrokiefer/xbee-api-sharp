@@ -13,7 +13,7 @@ namespace XBee.Test.Frames
     public class ATCommandResponseTest
     {
         [Test]
-        public void TestATCommandParse()
+        public void TestATCommandResponseParse()
         {
             var packet = new byte[] { 0x00, 0x05, 0x88, 0x01, 0x42, 0x44, 0x00 };
 
