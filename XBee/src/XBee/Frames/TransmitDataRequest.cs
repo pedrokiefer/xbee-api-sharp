@@ -39,7 +39,7 @@ namespace XBee.Frames
 
         public override byte[] ToByteArray()
         {
-            MemoryStream stream = new MemoryStream();
+            var stream = new MemoryStream();
 
             stream.WriteByte((byte)CommandId);
             stream.WriteByte(FrameId);
