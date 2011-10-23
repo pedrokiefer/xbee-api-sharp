@@ -7,9 +7,15 @@ namespace XBee.Frames
 {
     public class ManyToOneRouteRequest : XBeeFrame
     {
-        public ManyToOneRouteRequest()
+        private readonly PacketParser parser;
+        private int reserved;
+
+        public XBeeNode Source { get; private set; }
+
+        public ManyToOneRouteRequest(PacketParser parser)
         {
-            this.CommandId = XBeeAPICommandId.MANYTOONE_ROUTE_REQUEST_INDICATOR;
+            this.parser = parser;
+            CommandId = XBeeAPICommandId.MANYTOONE_ROUTE_REQUEST_INDICATOR;
         }
 
         public override byte[] ToByteArray()
@@ -19,7 +25,9 @@ namespace XBee.Frames
 
         public override void Parse()
         {
-            throw new NotImplementedException();
+            Source = new XBeeNode {Address64 = parser.ReadAddress64(), Address16 = parser.ReadAddress16()};
+
+            reserved = parser.ReadByte();
         }
     }
 }
