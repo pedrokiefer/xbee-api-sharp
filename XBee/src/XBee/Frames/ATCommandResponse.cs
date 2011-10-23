@@ -1,5 +1,6 @@
 ﻿using System;
 using System.Text;
+using XBee.Utils;
 
 namespace XBee.Frames
 {
@@ -8,6 +9,7 @@ namespace XBee.Frames
         private readonly PacketParser parser;
 
         public AT Command { get; private set; }
+        public ATValue Value { get; private set; }
         public byte CommandStatus { get; private set; }
 
         public ATCommandResponse(PacketParser parser)
@@ -32,9 +34,32 @@ namespace XBee.Frames
             Command = parser.ReadATCommand();
             CommandStatus = (byte)parser.ReadByte();
 
-            if (parser.HasMoreData()) {
-                Console.WriteLine("has data!");
+            if (Command == AT.ND)
+                ParseNetworkDiscovery();
+
+            var type = ((ATAttribute)Command.GetAttr()).ValueType;
+
+            if ((type != ATValueType.None) && parser.HasMoreData()) {
+                switch (type) {
+                    case ATValueType.Number:
+                        var vData = parser.ReadData();
+                        Value = new ATLongValue().FromByteArray(vData);
+                        break;
+                    case ATValueType.HexString:
+                        var hexData = parser.ReadData();
+                        Value = new ATStringValue(ByteUtils.toBase16(hexData));
+                        break;
+                    case ATValueType.String:
+                        var str = parser.ReadData();
+                        Value = new ATStringValue(Encoding.UTF8.GetString(str));
+                        break;
+                }
             }
+        }
+
+        private void ParseNetworkDiscovery()
+        {
+            throw new NotImplementedException();
         }
     }
 }
