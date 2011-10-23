@@ -8,16 +8,16 @@ namespace XBee.Frames
     {
         public ATAttribute(string atCommand, string description, ATValueType type)
         {
-            this.ATCommand = atCommand;
-            this.Description = description;
+            ATCommand = atCommand;
+            Description = description;
             ValueType = type;
         }
 
         public ATAttribute(string atCommand, string description, ATValueType type, ulong maxValue)
         {
-            this.ATCommand = atCommand;
-            this.Description = description;
-            this.MaximumValue = maxValue;
+            ATCommand = atCommand;
+            Description = description;
+            MaximumValue = maxValue;
             ValueType = type;
         }
 
@@ -31,7 +31,7 @@ namespace XBee.Frames
     {
         public static AT Parse(string value)
         {
-            var atCommands = (AT[]) Enum.GetValues(typeof(AT));
+            var atCommands = (AT[])Enum.GetValues(typeof(AT));
             var cmd = Array.Find(atCommands, at => ((ATAttribute)at.GetAttr()).ATCommand == value);
 
             if (cmd == 0)
