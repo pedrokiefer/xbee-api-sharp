@@ -17,7 +17,7 @@ namespace XBee.Frames
         }
 
         private XBeeNode destination;
-        private byte[] RFData;
+        private byte[] rfData;
 
         public byte BroadcastRadius { get; set; }
         public OptionValues Options { get; set; }
@@ -28,12 +28,12 @@ namespace XBee.Frames
             this.destination = destination;
             this.BroadcastRadius = 0;
             this.Options = 0;
-            this.RFData = null;
+            this.rfData = null;
         }
 
-        public void SetRFData(byte[] RFData)
+        public void SetRFData(byte[] rfData)
         {
-            this.RFData = RFData;
+            this.rfData = rfData;
         }
 
         public override byte[] ToByteArray()
@@ -49,8 +49,8 @@ namespace XBee.Frames
             stream.WriteByte((byte)BroadcastRadius);
             stream.WriteByte((byte)Options);
 
-            if (this.RFData != null) {
-                stream.Write(this.RFData, 0, this.RFData.Length);
+            if (this.rfData != null) {
+                stream.Write(this.rfData, 0, this.rfData.Length);
             }
 
             return stream.ToArray();
