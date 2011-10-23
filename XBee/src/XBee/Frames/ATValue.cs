@@ -13,6 +13,9 @@ namespace XBee.Frames
     {
         public string Value { get; set; }
 
+        public ATStringValue()
+        { }
+
         public ATStringValue(string v)
         {
             Value = v;
@@ -33,6 +36,9 @@ namespace XBee.Frames
     public class ATLongValue : ATValue
     {
         public ulong Value { get; set; }
+
+        public ATLongValue()
+        { }
 
         public ATLongValue(ulong v)
         {
