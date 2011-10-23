@@ -50,7 +50,7 @@ namespace XBee.Test.Frames
 
             var frame = new TransmitDataRequest(broadcast);
             frame.BroadcastRadius = 2;
-            frame.Options = TransmitDataRequest.OptionValues.DISABLE_ACK | TransmitDataRequest.OptionValues.EXTENDED_TIMEOUT;
+            frame.Options = TransmitDataRequest.OptionValues.DisableAck | TransmitDataRequest.OptionValues.ExtendedTimeout;
             Assert.AreEqual(new byte[] { 0x10, 0x00, 0x00, 0x00, 0x00, 0x00, 0x00, 0x00, 0xFF, 0xFF, 0xFF, 0xFE, 0x02, 0x41 }, frame.ToByteArray());
         }
 
@@ -63,7 +63,7 @@ namespace XBee.Test.Frames
 
             var frame = new TransmitDataRequest(broadcast);
             frame.BroadcastRadius = 2;
-            frame.Options = TransmitDataRequest.OptionValues.DISABLE_ACK | TransmitDataRequest.OptionValues.EXTENDED_TIMEOUT;
+            frame.Options = TransmitDataRequest.OptionValues.DisableAck | TransmitDataRequest.OptionValues.ExtendedTimeout;
             frame.SetRFData(new byte[] { 0x11, 0x22, 0x33, 0x00 });
             Assert.AreEqual(new byte[] { 0x10, 0x00, 0x00, 0x00, 0x00, 0x00, 0x00, 0x00, 0xFF, 0xFF, 0xFF, 0xFE, 0x02, 0x41, 0x11, 0x22, 0x33, 0x00 }, frame.ToByteArray());
         }
