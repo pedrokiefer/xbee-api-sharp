@@ -48,6 +48,7 @@
     <Compile Include="src\XBee\Frames\ATCommand.cs" />
     <Compile Include="src\XBee\Frames\ATCommandResponse.cs" />
     <Compile Include="src\XBee\Frames\ATQueueCommand.cs" />
+    <Compile Include="src\XBee\Frames\ATValue.cs" />
     <Compile Include="src\XBee\Frames\CreateSourceRoute.cs" />
     <Compile Include="src\XBee\Frames\ExplicitAddressingTransmit.cs" />
     <Compile Include="src\XBee\Frames\ManyToOneRouteRequest.cs" />

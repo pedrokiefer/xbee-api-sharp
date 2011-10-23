@@ -22,7 +22,8 @@ namespace XBee.Test.Frames
         public void TestATCommandDH()
         {
             var cmd = new ATCommand(AT.DH);
-            cmd.SetValue(0x11223300);
+            var v = new ATLongValue(0x11223300);
+            cmd.SetValue(v);
             Assert.AreEqual(new byte[] { 0x08, 0x00, (byte)'D', (byte)'H', 0x11, 0x22, 0x33, 0x00 }, cmd.ToByteArray());
         }
 
@@ -38,7 +39,8 @@ namespace XBee.Test.Frames
         public void TestATQueueCommandDH()
         {
             var cmd = new ATQueueCommand(AT.DH);
-            cmd.SetValue(0x11223300);
+            var v = new ATLongValue(0x11223300);
+            cmd.SetValue(v);
             Assert.AreEqual(new byte[] { 0x09, 0x00, (byte)'D', (byte)'H', 0x11, 0x22, 0x33, 0x00 }, cmd.ToByteArray());
         }
     }

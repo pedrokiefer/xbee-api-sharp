@@ -10,6 +10,8 @@ namespace XBee.Frames
     public class RemoteATCommand : XBeeFrame
     {
         private readonly PacketParser parser;
+        private ATValue value;
+        private bool hasValue;
 
         public AT Command { get; set; }
         public XBeeNode Destination { get; set; }
@@ -28,9 +30,15 @@ namespace XBee.Frames
             this.Destination = destination;
         }
 
+        public void SetValue(ATValue value)
+        {
+            this.hasValue = true;
+            this.value = value;
+        }
+
         public override byte[] ToByteArray()
         {
-            MemoryStream stream = new MemoryStream();
+            var stream = new MemoryStream();
 
             stream.WriteByte((byte)CommandId);
             stream.WriteByte(FrameId);
@@ -43,6 +51,11 @@ namespace XBee.Frames
             var cmd = ((ATAttr)Command.GetAttr()).ATCommand.ToCharArray();
             stream.WriteByte((byte)cmd[0]);
             stream.WriteByte((byte)cmd[1]);
+
+            if (hasValue) {
+                var v = value.ToByteArray();
+                stream.Write(v, 0, v.Length);
+            }
 
             return stream.ToArray();
         }

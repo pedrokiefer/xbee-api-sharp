@@ -33,6 +33,8 @@ namespace XBee.Test.Frames
 
             var cmd = new RemoteATCommand(AT.DH, broadcast);
             cmd.FrameId = 1;
+            var v = new ATLongValue(0x11223300);
+            cmd.SetValue(v);
 
             Assert.AreEqual(new byte[] { 0x17, 0x01, 0x00, 0x00, 0x00, 0x00, 0x00, 0x00, 0xFF, 0xFF, 0xFF, 0xFE, 0x00, (byte)'D', (byte)'H', 0x11, 0x22, 0x33, 0x00 }, cmd.ToByteArray());
         }
