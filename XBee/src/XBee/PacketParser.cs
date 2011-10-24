@@ -1,5 +1,6 @@
 ﻿using System;
 using System.IO;
+using System.Text;
 using XBee.Frames;
 
 namespace XBee
@@ -78,6 +79,16 @@ namespace XBee
 
             packetStream.Read(data, 0, readLength);
             return data;
+        }
+
+        public string ReadString()
+        {
+            var sb = new StringBuilder();
+            char b;
+            while((b = (char)packetStream.ReadByte()) != 0x00) {
+                sb.Append(b);
+            }
+            return sb.ToString();
         }
     }
 }
