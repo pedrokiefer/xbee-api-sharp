@@ -24,18 +24,18 @@ namespace XBee.Frames
         public ATCommand(PacketParser parser)
         {
             this.parser = parser;
-            this.CommandId = XBeeAPICommandId.AT_COMMAND_REQUEST;
+            CommandId = XBeeAPICommandId.AT_COMMAND_REQUEST;
         }
 
         public ATCommand(AT atCommand)
         {
             this.atCommand = atCommand;
-            this.CommandId = XBeeAPICommandId.AT_COMMAND_REQUEST;
+            CommandId = XBeeAPICommandId.AT_COMMAND_REQUEST;
         }
 
         public void SetValue(ATValue value)
         {
-            this.hasValue = true;
+            hasValue = true;
             this.value = value;
         }
 
