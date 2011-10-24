@@ -2,12 +2,12 @@
 using System.Runtime.CompilerServices;
 using System.Runtime.InteropServices;
 
-[assembly: AssemblyTitle("AssemblyInfo")]
-[assembly: AssemblyDescription("")]
+[assembly: AssemblyTitle("XBee# API Tests")]
+[assembly: AssemblyDescription("Tests for XBee# implementation")]
 [assembly: AssemblyConfiguration("")]
-[assembly: AssemblyCompany("")]
-[assembly: AssemblyProduct("AssemblyInfo")]
-[assembly: AssemblyCopyright("Copyright ©  2011")]
+[assembly: AssemblyCompany("Pedro Kiefer")]
+[assembly: AssemblyProduct("XBee API Tests")]
+[assembly: AssemblyCopyright("Copyright © Pedro Kiefer 2011")]
 [assembly: AssemblyTrademark("")]
 [assembly: AssemblyCulture("")]
 

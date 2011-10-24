@@ -5,12 +5,12 @@ using System.Runtime.InteropServices;
 // General Information about an assembly is controlled through the following 
 // set of attributes. Change these attribute values to modify the information
 // associated with an assembly.
-[assembly: AssemblyTitle("zbee-api-sharp")]
+[assembly: AssemblyTitle("XBee#")]
 [assembly: AssemblyDescription("")]
 [assembly: AssemblyConfiguration("")]
-[assembly: AssemblyCompany("x")]
-[assembly: AssemblyProduct("zbee-api-sharp")]
-[assembly: AssemblyCopyright("Copyright © x 2011")]
+[assembly: AssemblyCompany("Pedro Kiefer")]
+[assembly: AssemblyProduct("XBee#")]
+[assembly: AssemblyCopyright("Copyright © Pedro Kiefer 2011")]
 [assembly: AssemblyTrademark("")]
 [assembly: AssemblyCulture("")]
 
