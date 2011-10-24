@@ -12,9 +12,9 @@ namespace XBee.Frames
         [Flags]
         public enum OptionValues : byte
         {
-            DISABLE_ACK = 0x01,
-            ENABLE_APS_ENCRYPTION = 0x20,
-            EXTENDED_TIMEOUT = 0x40
+            DisableAck = 0x01,
+            EnableAPSEncryption = 0x20,
+            ExtendedTimeout = 0x40
         }
 
         private XBeeNode destination;

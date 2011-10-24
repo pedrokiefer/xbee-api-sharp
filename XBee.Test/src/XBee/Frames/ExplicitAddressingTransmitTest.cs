@@ -22,7 +22,7 @@ namespace XBee.Test.Frames
             ExplicitAddressingTransmit frame = new ExplicitAddressingTransmit(broadcast);
             frame.FrameId = 1;
             frame.BroadcastRadius = 2;
-            frame.Options = ExplicitAddressingTransmit.OptionValues.DISABLE_ACK | ExplicitAddressingTransmit.OptionValues.EXTENDED_TIMEOUT;
+            frame.Options = ExplicitAddressingTransmit.OptionValues.DisableAck | ExplicitAddressingTransmit.OptionValues.ExtendedTimeout;
 
             frame.SourceEndpoint = 0xA0;
             frame.DestinationEndpoint = 0xA1;
@@ -47,7 +47,7 @@ namespace XBee.Test.Frames
             Assert.That(cmd.FrameId, Is.EqualTo(0x01));
 
             Assert.That(cmd.BroadcastRadius, Is.EqualTo(2));
-            Assert.That(cmd.Options, Is.EqualTo(ExplicitAddressingTransmit.OptionValues.DISABLE_ACK | ExplicitAddressingTransmit.OptionValues.EXTENDED_TIMEOUT));
+            Assert.That(cmd.Options, Is.EqualTo(ExplicitAddressingTransmit.OptionValues.DisableAck | ExplicitAddressingTransmit.OptionValues.ExtendedTimeout));
 
             Assert.That(cmd.SourceEndpoint, Is.EqualTo(0xA0));
             Assert.That(cmd.DestinationEndpoint, Is.EqualTo(0xA1));
@@ -65,7 +65,7 @@ namespace XBee.Test.Frames
             ExplicitAddressingTransmit frame = new ExplicitAddressingTransmit(broadcast);
             frame.FrameId = 1;
             frame.BroadcastRadius = 2;
-            frame.Options = ExplicitAddressingTransmit.OptionValues.DISABLE_ACK | ExplicitAddressingTransmit.OptionValues.EXTENDED_TIMEOUT;
+            frame.Options = ExplicitAddressingTransmit.OptionValues.DisableAck | ExplicitAddressingTransmit.OptionValues.ExtendedTimeout;
 
             frame.SourceEndpoint = 0xA0;
             frame.DestinationEndpoint = 0xA1;
@@ -88,7 +88,7 @@ namespace XBee.Test.Frames
             ExplicitAddressingTransmit frame = new ExplicitAddressingTransmit(broadcast);
             frame.FrameId = 1;
             frame.BroadcastRadius = 2;
-            frame.Options = ExplicitAddressingTransmit.OptionValues.DISABLE_ACK | ExplicitAddressingTransmit.OptionValues.EXTENDED_TIMEOUT;
+            frame.Options = ExplicitAddressingTransmit.OptionValues.DisableAck | ExplicitAddressingTransmit.OptionValues.ExtendedTimeout;
 
             frame.SourceEndpoint = 0xA0;
             frame.DestinationEndpoint = 0xA1;
@@ -110,7 +110,7 @@ namespace XBee.Test.Frames
             ExplicitAddressingTransmit frame = new ExplicitAddressingTransmit(broadcast);
             frame.FrameId = 1;
             frame.BroadcastRadius = 2;
-            frame.Options = ExplicitAddressingTransmit.OptionValues.DISABLE_ACK | ExplicitAddressingTransmit.OptionValues.EXTENDED_TIMEOUT;
+            frame.Options = ExplicitAddressingTransmit.OptionValues.DisableAck | ExplicitAddressingTransmit.OptionValues.ExtendedTimeout;
 
             frame.SourceEndpoint = 0xA0;
             frame.DestinationEndpoint = 0xA1;
@@ -132,7 +132,7 @@ namespace XBee.Test.Frames
             ExplicitAddressingTransmit frame = new ExplicitAddressingTransmit(broadcast);
             frame.FrameId = 1;
             frame.BroadcastRadius = 2;
-            frame.Options = ExplicitAddressingTransmit.OptionValues.DISABLE_ACK | ExplicitAddressingTransmit.OptionValues.EXTENDED_TIMEOUT;
+            frame.Options = ExplicitAddressingTransmit.OptionValues.DisableAck | ExplicitAddressingTransmit.OptionValues.ExtendedTimeout;
 
             frame.SourceEndpoint = 0xA0;
             frame.ClusterId = 0x1554;
@@ -154,7 +154,7 @@ namespace XBee.Test.Frames
             var frame = new ExplicitAddressingTransmit(broadcast);
             frame.FrameId = 1;
             frame.BroadcastRadius = 2;
-            frame.Options = ExplicitAddressingTransmit.OptionValues.DISABLE_ACK | ExplicitAddressingTransmit.OptionValues.EXTENDED_TIMEOUT;
+            frame.Options = ExplicitAddressingTransmit.OptionValues.DisableAck | ExplicitAddressingTransmit.OptionValues.ExtendedTimeout;
 
             frame.DestinationEndpoint = 0xA1;
             frame.ClusterId = 0x1554;
