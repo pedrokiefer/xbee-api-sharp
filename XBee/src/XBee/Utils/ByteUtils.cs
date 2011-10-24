@@ -5,7 +5,7 @@ using System.Text;
 
 namespace XBee.Utils
 {
-    class ByteUtils
+    public class ByteUtils
     {
         public static string toBase16(byte[] data)
         {
