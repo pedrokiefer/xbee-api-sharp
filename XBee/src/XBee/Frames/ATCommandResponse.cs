@@ -47,7 +47,7 @@ namespace XBee.Frames
                         break;
                     case ATValueType.HexString:
                         var hexData = parser.ReadData();
-                        Value = new ATStringValue(ByteUtils.toBase16(hexData));
+                        Value = new ATStringValue(ByteUtils.ToBase16(hexData));
                         break;
                     case ATValueType.String:
                         var str = parser.ReadData();

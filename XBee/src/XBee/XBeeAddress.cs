@@ -12,7 +12,7 @@ namespace XBee
 
         public override string ToString()
         {
-            return ByteUtils.toBase16(this.GetAddress());
+            return ByteUtils.ToBase16(this.GetAddress());
         }
     }
 }

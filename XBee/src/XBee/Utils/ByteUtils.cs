@@ -7,7 +7,7 @@ namespace XBee.Utils
 {
     public class ByteUtils
     {
-        public static string toBase16(byte[] data)
+        public static string ToBase16(byte[] data)
         {
             if (data == null)
                 return "";
