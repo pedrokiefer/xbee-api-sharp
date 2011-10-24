@@ -10,18 +10,18 @@ namespace XBee
         public static XBeeAddress16 BROADCAST = new XBeeAddress16((ushort)0xFFFF);
         public static XBeeAddress16 ZNET_BROADCAST = new XBeeAddress16((ushort)0xFFFE);
 
-        private byte[] address;
+        private readonly byte[] address;
 
         public XBeeAddress16(ushort address)
         {
-            byte[] addressLittleEndian = BitConverter.GetBytes(address);
+            var addressLittleEndian = BitConverter.GetBytes(address);
             Array.Reverse(addressLittleEndian);
             this.address = addressLittleEndian;
         }
 
         public override byte[] GetAddress()
         {
-            return this.address;
+            return address;
         }
 
         public override bool Equals(object obj)
@@ -31,12 +31,9 @@ namespace XBee
             if ((obj == null) || (typeof(XBeeAddress16) != obj.GetType()))
                 return false;
 
-            XBeeAddress16 addr = (XBeeAddress16) obj;
+            var addr = (XBeeAddress16) obj;
 
-            if (this.GetAddress().SequenceEqual(addr.GetAddress()))
-                return true;
-
-            return false;
+            return GetAddress().SequenceEqual(addr.GetAddress());
         }
 
         public override int GetHashCode()

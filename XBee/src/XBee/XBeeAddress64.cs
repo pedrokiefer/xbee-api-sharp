@@ -20,7 +20,7 @@ namespace XBee
 
         public override byte[] GetAddress()
         {
-            return this.address;
+            return address;
         }
 
         public override bool Equals(object obj)
@@ -33,7 +33,7 @@ namespace XBee
 
             var addr = (XBeeAddress64) obj;
 
-            return this.GetAddress().SequenceEqual(addr.GetAddress());
+            return GetAddress().SequenceEqual(addr.GetAddress());
         }
 
         public override int GetHashCode()

@@ -12,7 +12,7 @@ namespace XBee.Utils
             if (data == null)
                 return "";
 
-            StringBuilder sb = new StringBuilder();
+            var sb = new StringBuilder();
             foreach (byte b in data) {
                 sb.Append(String.Format("0x{0:X2} ", b));
             }

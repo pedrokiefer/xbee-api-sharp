@@ -1,9 +1,5 @@
 ﻿using System;
-using System.Collections.Generic;
-using System.Linq;
-using System.Text;
 using System.IO;
-using XBee;
 
 namespace XBee.Frames
 {
@@ -17,7 +13,7 @@ namespace XBee.Frames
             ExtendedTimeout = 0x40
         }
 
-        private XBeeNode destination;
+        private readonly XBeeNode destination;
         private byte[] rfData;
 
         public byte BroadcastRadius { get; set; }
@@ -25,11 +21,11 @@ namespace XBee.Frames
 
         public TransmitDataRequest(XBeeNode destination)
         {
-            this.CommandId = XBeeAPICommandId.TRANSMIT_DATA_REQUEST;
+            CommandId = XBeeAPICommandId.TRANSMIT_DATA_REQUEST;
             this.destination = destination;
-            this.BroadcastRadius = 0;
-            this.Options = 0;
-            this.rfData = null;
+            BroadcastRadius = 0;
+            Options = 0;
+            rfData = null;
         }
 
         public void SetRFData(byte[] rfData)
