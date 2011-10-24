@@ -13,19 +13,19 @@ namespace XBee.Test.Frames
         [Test]
         public void ATUtilValid()
         {
-            Assert.That(ATUtil.Parse("DH"), Is.EqualTo(AT.DH));
+            Assert.That(ATUtil.Parse("DH"), Is.EqualTo(AT.DestinationHigh));
         }
 
         [Test]
         public void ATUtilInvalidReturnsUnknown()
         {
-            Assert.That(ATUtil.Parse("11"), Is.EqualTo(AT.UNKNOWN));
+            Assert.That(ATUtil.Parse("11"), Is.EqualTo(AT.Unknown));
         }
 
         [Test]
         public void ATUtilNullReturnsUnknown()
         {
-            Assert.That(ATUtil.Parse(null), Is.EqualTo(AT.UNKNOWN));
+            Assert.That(ATUtil.Parse(null), Is.EqualTo(AT.Unknown));
         }
     }
 }

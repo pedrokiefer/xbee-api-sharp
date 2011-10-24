@@ -27,7 +27,7 @@ namespace XBee.Test.Frames
             Assert.That(cmd.Source.Address16, Is.EqualTo(new XBeeAddress16(0x7D84)));
             Assert.That(cmd.Source.Address64, Is.EqualTo(new XBeeAddress64(0x0013A20040522BAA)));
 
-            Assert.That(cmd.Command, Is.EqualTo(AT.SL));
+            Assert.That(cmd.Command, Is.EqualTo(AT.SerialNumberLow));
             Assert.That(cmd.CommandStatus, Is.EqualTo(RemoteCommandResponse.CommandStatusType.Ok));
             Assert.That(((ATLongValue)cmd.Value).Value, Is.EqualTo(new ATLongValue(0x40522BAA).Value));
         }

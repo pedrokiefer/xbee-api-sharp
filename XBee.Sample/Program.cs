@@ -14,7 +14,7 @@ namespace XBee.Sample
             var bee = new XBee();
 
             bee.SetConnection(new SerialConnection("COM4", 9600));
-            var request = new ATCommand(AT.AP) {FrameId = 1};
+            var request = new ATCommand(AT.ApiEnable) {FrameId = 1};
 
             var frame = bee.SendSynchronous(request, 1000);
 

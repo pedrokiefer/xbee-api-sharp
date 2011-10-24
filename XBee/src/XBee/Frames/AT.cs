@@ -35,7 +35,7 @@ namespace XBee.Frames
             var cmd = Array.Find(atCommands, at => ((ATAttribute)at.GetAttr()).ATCommand == value);
 
             if (cmd == 0)
-                return AT.UNKNOWN;
+                return AT.Unknown;
 
             return cmd;
         }
@@ -52,196 +52,184 @@ namespace XBee.Frames
     public enum AT
     {
         [AT("DH", "Destination Address High", ATValueType.Number, 0xFFFFFFFF)]
-        DH = 0x10000,
+        DestinationHigh = 0x10000,
         [AT("DL", "Destination Address Low", ATValueType.Number, 0xFFFFFFFF)]
-        DL,
+        DestinationLow,
         [AT("MY", "16-bit Network Address", ATValueType.Number, 0xFFFE)]
-        MY,
+        MyNetworkAddress,
         [AT("MP", "16-bit Parent Network Address", ATValueType.Number, 0xFFFE)]
-        MP,
+        ParentAddress,
         [AT("NC", "Number of Remaining Children", ATValueType.Number, 0)]
-        NC,
+        RemainingChildren,
         [AT("SH", "Serial Number High", ATValueType.Number, 0xFFFFFFFF)]
-        SH,
+        SerialNumberHigh,
         [AT("SL", "Serial Number Low", ATValueType.Number, 0xFFFFFFFF)]
-        SL,
+        SerialNumberLow,
         [AT("NI", "Node Identifier", ATValueType.String, 20)]
-        NI,
+        NodeIdentifier,
         [AT("SE", "Source Endpoint", ATValueType.Number, 0xFF)]
-        SE,
+        SourceEndpoint,
         [AT("DE", "Destination Endpoint", ATValueType.Number, 0xFF)]
-        DE,
+        DestinationEndpoint,
         [AT("CI", "Cluster Identifier", ATValueType.Number, 0xFFFF)]
-        CI,
+        ClusterIdentifier,
         [AT("NP", "Maximum RF Payload Bytes", ATValueType.Number, 0xFFFF)]
-        NP,
+        MaximumPayloadLenght,
         [AT("DD", "Device Type Identifier", ATValueType.Number, 0xFFFFFFFF)]
-        DD,
+        DeviceTypeIdentifier,
         [AT("CH", "Operating Channel", ATValueType.Number)]
-        CH,
+        OperatingChannel,
         [AT("ID", "Extended PAN ID", ATValueType.Number, 0xFFFFFFFFFFFFFFFF)]
-        ID,
+        ExtendedPanId,
         [AT("OP", "Operating Extended PAN ID", ATValueType.Number, 0xFFFFFFFFFFFFFFFF)]
-        OP,
+        OperatingExtendedPanId,
         [AT("NH", "Maximum Unicast Hops", ATValueType.Number, 0xFF)]
-        NH,
+        UnicastHops,
         [AT("BH", "Broadcast Hops", ATValueType.Number, 0x1E)]
-        BH,
+        BroadcastHops,
         [AT("OI", "Operating 16-bit PAN ID", ATValueType.Number, 0xFFFF)]
-        OI,
+        OperatingPanId,
         [AT("NT", "Node Discovery Timeout", ATValueType.Number, 0xFF)]
-        NT,
+        NodeDiscoveryTimeout,
         [AT("NO", "Network Discovery options", ATValueType.Number, 0x03)]
-        NO,
+        NetworkDiscovertOptions,
         [AT("SC", "Scan Channel", ATValueType.Number, 0x7FFF)]
-        SC,
+        ScanChannel,
         [AT("SD", "Scan Duration", ATValueType.Number, 7)]
-        SD,
+        ScanDuration,
         [AT("ZS", "ZigBee Stack Profile", ATValueType.Number, 2)]
-        ZS,
+        ZigBeeStackProfile,
         [AT("NJ", "Node Join Time", ATValueType.Number, 0xFF)]
-        NJ,
+        NodeJoinTime,
         [AT("JV", "Channel Verification", ATValueType.Number)]
-        JV,
+        ChannelVerification,
         [AT("NW", "Network Watchdog Timeout", ATValueType.Number, 0x64FF)]
-        NW,
+        NetworkWatchdogTimeout,
         [AT("JN", "Join Notification", ATValueType.Number, 1)]
-        JN,
+        JoinNotification,
         [AT("AR", "Aggregate Routing Notification", ATValueType.Number, 0xFF)]
-        AR,
-
+        AggregateRoutingNotification,
         [AT("EE", "Encryption Enable", ATValueType.Number, 1)]
-        EE,
+        EncryptionEnable,
         [AT("EO", "Encryption Options", ATValueType.Number, 0xFF)]
-        EO,
+        EncryptionOptions,
         [AT("NK", "Network Encryption Key", ATValueType.HexString, 0)]
-        NK,
-        [AT("KY", "Link Key", ATValueType.HexString, 0)]
-        KY,
-
+        NetworkEncryptionKey,
+        [AT("KY", "Link Encryption Key", ATValueType.HexString, 0)]
+        LinkEncryptionKey,
         [AT("PL", "Power Level", ATValueType.Number, 4)]
-        PL,
+        PowerLevel,
         [AT("PM", "Power Mode", ATValueType.Number, 1)]
-        PM,
+        PowerMode,
         [AT("DB", "Received Signal Strength", ATValueType.Number, 0xFF)]
-        DB,
+        ReceivedSignalStrength,
         [AT("PP", "Peak Power", ATValueType.Number, 0x12)]
-        PP,
-
+        PeakPower,
         [AT("AP", "API Enable", ATValueType.Number, 2)]
-        AP,
+        ApiEnable,
         [AT("AO", "API Options", ATValueType.Number, 3)]
-        AO,
+        ApiOptions,
         [AT("BD", "Interface Data Rate", ATValueType.Number, 0xE1000)]
-        BD,
+        BaudRate,
         [AT("NB", "Serial Parity", ATValueType.Number, 3)]
-        NB,
+        Parity,
         [AT("SB", "Stop Bits", ATValueType.Number, 1)]
-        SB,
+        StopBits,
         [AT("RO", "Packetization Timeout", ATValueType.Number, 0xFF)]
-        RO,
+        PacketizationTimeout,
         [AT("D7", "DIO7 Configuration", ATValueType.Number, 7)]
-        D7,
+        DigitalIO7,
         [AT("D6", "DIO6 Configuration", ATValueType.Number, 5)]
-        D6,
-
+        DigitalIO6,
         [AT("IR", "IO Sample Rate", ATValueType.Number, 0xFFFF)]
-        IR,
+        IOSampleRate,
         [AT("IC", "IO Digital Change Detection", ATValueType.Number, 0xFFFF)]
-        IC,
+        IOChangeDetection,
         [AT("P0", "PWM0 Configuration", ATValueType.Number, 5)]
-        P0,
+        Pwm0Configuration,
         [AT("P1", "DIO11 Configuration", ATValueType.Number, 5)]
-        P1,
+        DigitalIO11,
         [AT("P2", "DIO12 Configuration", ATValueType.Number, 5)]
-        P2,
+        DigitalIO12,
         [AT("P3", "DIO13 Configuration", ATValueType.Number, 5)]
-        P3,
+        DigitalIO13,
         [AT("D0", "AD0/DIO0 Configuration", ATValueType.Number, 5)]
-        D0,
+        DigitalIO0,
         [AT("D1", "AD1/DIO1 Configuration", ATValueType.Number, 5)]
-        D1,
+        DigitalIO1,
         [AT("D2", "AD2/DIO2 Configuration", ATValueType.Number, 5)]
-        D2,
-
-
+        DigitalIO2,
         [AT("D3", "AD3/DIO3 Configuration", ATValueType.Number, 5)]
-        D3,
+        DigitalIO3,
         [AT("D4", "DIO4 Configuration", ATValueType.Number, 5)]
-        D4,
+        DigitalIO4,
         [AT("D5", "DIO5 Configuration", ATValueType.Number, 5)]
-        D5,
+        DigitalIO5,
         [AT("D8", "DIO8 Configuration", ATValueType.Number, 5)]
-        D8,
+        DigitalIO8,
         [AT("LT", "Assoc LED Blink Time", ATValueType.Number, 0xFF)]
-        LT,
+        LedBlinkTime,
         [AT("PR", "Pull-up Resistor", ATValueType.Number, 0x3FFF)]
-        PR,
+        PullUpResistor,
         [AT("RP", "RSSI PWM Timer", ATValueType.Number, 0xFF)]
-        RP,
+        RSSITimer,
         [AT("%V", "Supply Voltage", ATValueType.Number, 0xFFFF)]
-        SUPPLY_VOLTAGE,
+        SupplyVoltage,
         [AT("V+", "Voltage Supply Monitoring", ATValueType.Number, 0xFFFF)]
-        VOLTAGE_MONITORING,
+        VoltageMonitoring,
         [AT("TP", "Reads the module temperature in Degrees Celsius", ATValueType.Number, 0xFFFF)]
-        TP,
-
+        Temperature,
         [AT("VR", "Firmware Version", ATValueType.Number, 0xFFFF)]
-        VR,
+        FirmwareVersion,
         [AT("HV", "Hardware Version", ATValueType.Number, 0xFFFF)]
-        HV,
+        HardwareVersion,
         [AT("AI", "Association Indication", ATValueType.Number, 0xFF)]
-        AI,
-
+        AssociationIndication,
         [AT("CT", "Command Mode Timeout", ATValueType.Number, 0x028F)]
-        CT,
+        CommandModeTimeout,
         [AT("CN", "Exit Command Mode", ATValueType.Number)]
-        CN,
+        ExitCommandMode,
         [AT("GT", "Guard Times", ATValueType.Number, 0x0CE4)]
-        GT,
+        GuardTimes,
         [AT("CC", "Command Sequence Character", ATValueType.Number, 0xFF)]
-        CC,
-
+        CommandSequenceCharacter,
         [AT("SM", "Sleep Mode", ATValueType.Number, 5)]
-        SM,
+        SleepMode,
         [AT("SN", "Number of Sleep Periods", ATValueType.Number, 0xFFFF)]
-        SN,
+        NumberOfSleepPeriods,
         [AT("SP", "Sleep Period", ATValueType.Number, 0xAF0)]
-        SP,
+        SleepPeriod,
         [AT("ST", "Time Before Sleep", ATValueType.Number, 0xFFFE)]
-        ST,
+        TimeBeforeSleep,
         [AT("SO", "Sleep Options", ATValueType.Number, 0xFF)]
-        SO,
+        SleepOptions,
         [AT("WH", "Wake Host", ATValueType.Number, 0xFFFF)]
-        WH,
+        WakeHost,
         [AT("PO", "Polling Rate", ATValueType.Number, 0x3E8)]
-        PO,
-
+        PollingRate,
         [AT("AC", "Apply Changes", ATValueType.None)]
-        AC,
+        ApplyChanges,
         [AT("WR", "Write", ATValueType.None)]
-        WR,
+        Write,
         [AT("RE", "Restore Defaults", ATValueType.None)]
-        RE,
+        RestoreDefaults,
         [AT("FR", "Software Reset", ATValueType.None)]
-        FR,
+        SoftwareReset,
         [AT("NR", "Network Reset", ATValueType.Number, 1)]
-        NR,
+        NetworkReset,
         [AT("SI", "Sleep Immediately", ATValueType.None)]
-        SI,
+        SleepImmediately,
         [AT("CB", "Commissioning Pushbutton", ATValueType.None)]
-        CB,
-
+        CommissioningPushButton,
         [AT("ND", "Node Discover", ATValueType.Number)]
-        ND,
+        NodeDiscover,
         [AT("DN", "Destination Node", ATValueType.Number)]
-        DN,
+        DestinationNode,
         [AT("IS", "Force Sample", ATValueType.None)]
-        IS,
+        ForceSample,
         [AT("1S", "XBee Sensor Sample", ATValueType.None)]
-        SENSOR_SAMPLE,
-
+        SensorSample,
         [AT("", "Unknown AT Command", ATValueType.None)]
-        UNKNOWN
+        Unknown
     }
 }

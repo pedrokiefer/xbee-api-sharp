@@ -62,7 +62,7 @@ namespace XBee.Test
             Assert.That(frame, Is.InstanceOf<ATCommand>());
             var cmd = (ATCommand) frame;
             Assert.That(cmd.FrameId, Is.EqualTo(0x01));
-            Assert.That(cmd.Command, Is.EqualTo(AT.DH));
+            Assert.That(cmd.Command, Is.EqualTo(AT.DestinationHigh));
         }
 
         [Test]
@@ -74,7 +74,7 @@ namespace XBee.Test
             Assert.That(frame, Is.InstanceOf<ATCommand>());
             var cmd = (ATCommand) frame;
             Assert.That(cmd.FrameId, Is.EqualTo(0x01));
-            Assert.That(cmd.Command, Is.EqualTo(AT.DH));
+            Assert.That(cmd.Command, Is.EqualTo(AT.DestinationHigh));
         }
     }
 }

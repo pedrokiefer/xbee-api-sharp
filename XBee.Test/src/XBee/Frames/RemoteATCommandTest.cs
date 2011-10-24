@@ -31,7 +31,7 @@ namespace XBee.Test.Frames
             broadcast.Address16 = XBeeAddress16.ZNET_BROADCAST;
             broadcast.Address64 = XBeeAddress64.BROADCAST;
 
-            var cmd = new RemoteATCommand(AT.DH, broadcast);
+            var cmd = new RemoteATCommand(AT.DestinationHigh, broadcast);
             cmd.FrameId = 1;
             var v = new ATLongValue(0x11223300);
             cmd.SetValue(v);
@@ -56,7 +56,7 @@ namespace XBee.Test.Frames
             Assert.That(cmd.Destination.Address16, Is.EqualTo(XBeeAddress16.ZNET_BROADCAST));
             Assert.That(cmd.Destination.Address64, Is.EqualTo(new XBeeAddress64(0x0013A20040401122)));
             Assert.That(cmd.RemoteOptions, Is.EqualTo(0x02));
-            Assert.That(cmd.Command, Is.EqualTo(AT.BH));
+            Assert.That(cmd.Command, Is.EqualTo(AT.BroadcastHops));
 
         }
     }

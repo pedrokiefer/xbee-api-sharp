@@ -43,7 +43,7 @@ namespace XBee.Frames
             Command = parser.ReadATCommand();
             CommandStatus = (CommandStatusType) parser.ReadByte();
 
-            if (Command == AT.ND)
+            if (Command == AT.NodeDiscover)
                 ParseNetworkDiscovery();
 
             var type = ((ATAttribute)Command.GetAttr()).ValueType;
