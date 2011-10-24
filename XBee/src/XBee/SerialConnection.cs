@@ -11,9 +11,14 @@ namespace XBee
     {
         private SerialPort serialPort;
 
-        public SerialConnection()
+        public SerialConnection(string port, int baudRate)
         {
-            serialPort = new SerialPort();
+            serialPort = new SerialPort(port, baudRate);
+        }
+
+        public void Write(byte[] data)
+        {
+            serialPort.Write(data, 0, data.Length);
         }
 
         public Stream GetStream()

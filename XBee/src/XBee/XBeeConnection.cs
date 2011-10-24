@@ -8,6 +8,7 @@ namespace XBee
 {
     public interface XBeeConnection
     {
+        void Write(byte[] data);
         Stream GetStream();
         void Close();
     }
