@@ -29,7 +29,7 @@ namespace XBee.Test.Frames
             Assert.That(cmd.ProfileId, Is.EqualTo(0xC105));
 
             Assert.That(cmd.ReceiveOptions, Is.EqualTo(ReceiveOptionsType.BroadcastPacket));
-            Assert.That(new System.Text.UTF8Encoding().GetString(cmd.Data), Is.EqualTo("RxData"));
+            Assert.That(new UTF8Encoding().GetString(cmd.Data), Is.EqualTo("RxData"));
         }
     }
 }

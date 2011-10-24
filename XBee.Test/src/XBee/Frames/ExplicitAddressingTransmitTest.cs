@@ -15,11 +15,11 @@ namespace XBee.Test.Frames
         [Test]
         public void TestExplicitAddressingRequestBroadcastRadiusOptions()
         {
-            XBeeNode broadcast = new XBeeNode();
+            var broadcast = new XBeeNode();
             broadcast.Address16 = XBeeAddress16.ZNET_BROADCAST;
             broadcast.Address64 = XBeeAddress64.BROADCAST;
 
-            ExplicitAddressingTransmit frame = new ExplicitAddressingTransmit(broadcast);
+            var frame = new ExplicitAddressingTransmit(broadcast);
             frame.FrameId = 1;
             frame.BroadcastRadius = 2;
             frame.Options = ExplicitAddressingTransmit.OptionValues.DisableAck | ExplicitAddressingTransmit.OptionValues.ExtendedTimeout;
@@ -58,11 +58,11 @@ namespace XBee.Test.Frames
         [Test]
         public void TestExplicitAddressingRequestBroadcastRadiusOptionsData()
         {
-            XBeeNode broadcast = new XBeeNode();
+            var broadcast = new XBeeNode();
             broadcast.Address16 = XBeeAddress16.ZNET_BROADCAST;
             broadcast.Address64 = XBeeAddress64.BROADCAST;
 
-            ExplicitAddressingTransmit frame = new ExplicitAddressingTransmit(broadcast);
+            var frame = new ExplicitAddressingTransmit(broadcast);
             frame.FrameId = 1;
             frame.BroadcastRadius = 2;
             frame.Options = ExplicitAddressingTransmit.OptionValues.DisableAck | ExplicitAddressingTransmit.OptionValues.ExtendedTimeout;
@@ -81,11 +81,11 @@ namespace XBee.Test.Frames
         [ExpectedException(typeof(XBeeFrameException), ExpectedMessage = "Missing Profile ID")]
         public void TestExplicitAddressingRequestMissingProfile()
         {
-            XBeeNode broadcast = new XBeeNode();
+            var broadcast = new XBeeNode();
             broadcast.Address16 = XBeeAddress16.ZNET_BROADCAST;
             broadcast.Address64 = XBeeAddress64.BROADCAST;
 
-            ExplicitAddressingTransmit frame = new ExplicitAddressingTransmit(broadcast);
+            var frame = new ExplicitAddressingTransmit(broadcast);
             frame.FrameId = 1;
             frame.BroadcastRadius = 2;
             frame.Options = ExplicitAddressingTransmit.OptionValues.DisableAck | ExplicitAddressingTransmit.OptionValues.ExtendedTimeout;
@@ -103,11 +103,11 @@ namespace XBee.Test.Frames
         [ExpectedException(typeof(XBeeFrameException), ExpectedMessage = "Missing Cluster ID")]
         public void TestExplicitAddressingRequestMissingCluster()
         {
-            XBeeNode broadcast = new XBeeNode();
+            var broadcast = new XBeeNode();
             broadcast.Address16 = XBeeAddress16.ZNET_BROADCAST;
             broadcast.Address64 = XBeeAddress64.BROADCAST;
 
-            ExplicitAddressingTransmit frame = new ExplicitAddressingTransmit(broadcast);
+            var frame = new ExplicitAddressingTransmit(broadcast);
             frame.FrameId = 1;
             frame.BroadcastRadius = 2;
             frame.Options = ExplicitAddressingTransmit.OptionValues.DisableAck | ExplicitAddressingTransmit.OptionValues.ExtendedTimeout;
@@ -125,11 +125,11 @@ namespace XBee.Test.Frames
         [ExpectedException(typeof(XBeeFrameException), ExpectedMessage = "Missing Destination Endpoint")]
         public void TestExplicitAddressingRequestMissingDestination()
         {
-            XBeeNode broadcast = new XBeeNode();
+            var broadcast = new XBeeNode();
             broadcast.Address16 = XBeeAddress16.ZNET_BROADCAST;
             broadcast.Address64 = XBeeAddress64.BROADCAST;
 
-            ExplicitAddressingTransmit frame = new ExplicitAddressingTransmit(broadcast);
+            var frame = new ExplicitAddressingTransmit(broadcast);
             frame.FrameId = 1;
             frame.BroadcastRadius = 2;
             frame.Options = ExplicitAddressingTransmit.OptionValues.DisableAck | ExplicitAddressingTransmit.OptionValues.ExtendedTimeout;

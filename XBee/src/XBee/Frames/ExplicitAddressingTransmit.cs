@@ -88,8 +88,8 @@ namespace XBee.Frames
             stream.WriteByte(BroadcastRadius);
             stream.WriteByte((byte) Options);
 
-            if (this.rfData != null) {
-                stream.Write(this.rfData, 0, this.rfData.Length);
+            if (rfData != null) {
+                stream.Write(rfData, 0, rfData.Length);
             }
 
             return stream.ToArray();
@@ -103,8 +103,8 @@ namespace XBee.Frames
 
             SourceEndpoint = (byte?) parser.ReadByte();
             DestinationEndpoint = (byte?) parser.ReadByte();
-            ClusterId = (UInt16?) parser.ReadUInt16();
-            ProfileId = (UInt16?) parser.ReadUInt16();
+            ClusterId = parser.ReadUInt16();
+            ProfileId = parser.ReadUInt16();
 
             BroadcastRadius = (byte) parser.ReadByte();
             Options = (OptionValues) parser.ReadByte();
