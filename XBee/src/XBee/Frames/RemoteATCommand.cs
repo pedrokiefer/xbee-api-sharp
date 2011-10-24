@@ -20,19 +20,19 @@ namespace XBee.Frames
         public RemoteATCommand(PacketParser parser)
         {
             this.parser = parser;
-            this.CommandId = XBeeAPICommandId.REMOTE_AT_COMMAND_REQUEST;
+            CommandId = XBeeAPICommandId.REMOTE_AT_COMMAND_REQUEST;
         }
 
         public RemoteATCommand(AT command, XBeeNode destination)
         {
-            this.CommandId = XBeeAPICommandId.REMOTE_AT_COMMAND_REQUEST;
-            this.Command = command;
-            this.Destination = destination;
+            CommandId = XBeeAPICommandId.REMOTE_AT_COMMAND_REQUEST;
+            Command = command;
+            Destination = destination;
         }
 
         public void SetValue(ATValue value)
         {
-            this.hasValue = true;
+            hasValue = true;
             this.value = value;
         }
 

@@ -21,7 +21,7 @@ namespace XBee.Frames
         public ZigBeeExplicitRXIndicator(PacketParser parser)
         {
             this.parser = parser;
-            this.CommandId = XBeeAPICommandId.EXPLICIT_RX_INDICATOR_RESPONSE;
+            CommandId = XBeeAPICommandId.EXPLICIT_RX_INDICATOR_RESPONSE;
         }
 
         public override byte[] ToByteArray()
@@ -35,8 +35,8 @@ namespace XBee.Frames
 
             SourceEndpoint = (byte?) parser.ReadByte();
             DestinationEndpoint = (byte?) parser.ReadByte();
-            ClusterId = (UInt16?) parser.ReadUInt16();
-            ProfileId = (UInt16?) parser.ReadUInt16();
+            ClusterId = parser.ReadUInt16();
+            ProfileId = parser.ReadUInt16();
 
             ReceiveOptions = (ReceiveOptionsType) parser.ReadByte();
             Data = parser.ReadData();
