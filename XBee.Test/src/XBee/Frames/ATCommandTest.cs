@@ -12,14 +12,14 @@ namespace XBee.Test.Frames
     class ATCommandTest
     {
         [Test]
-        public void TestATCommandND()
+        public void TestATCommandNodeDiscover()
         {
             var cmd = new ATCommand(AT.NodeDiscover);
             Assert.AreEqual(new byte[] { 0x08, 0x00, (byte)'N', (byte)'D' }, cmd.ToByteArray());
         }
 
         [Test]
-        public void TestATCommandDH()
+        public void TestATCommandDestinationHigh()
         {
             var cmd = new ATCommand(AT.DestinationHigh);
             var v = new ATLongValue(0x11223300);
@@ -28,7 +28,7 @@ namespace XBee.Test.Frames
         }
 
         [Test]
-        public void TestATCommandDHwithFrameId()
+        public void TestATCommandDestinationHighWithFrameId()
         {
             var cmd = new ATCommand(AT.DestinationHigh);
             cmd.FrameId = 0x02;
@@ -36,7 +36,7 @@ namespace XBee.Test.Frames
         }
 
         [Test]
-        public void TestATQueueCommandDH()
+        public void TestATQueueCommandDestinationHigh()
         {
             var cmd = new ATQueueCommand(AT.DestinationHigh);
             var v = new ATLongValue(0x11223300);
