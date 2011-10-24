@@ -69,7 +69,7 @@
     <Compile Include="src\XBee\SerialConnection.cs" />
     <Compile Include="src\XBee\Utils\ByteUtils.cs" />
     <Compile Include="src\XBee\Utils\EnumAttribute.cs" />
-    <Compile Include="src\XBee\Xbee.cs" />
+    <Compile Include="src\XBee\XBee.cs" />
     <Compile Include="src\XBee\XBeeAddress.cs" />
     <Compile Include="src\XBee\XBeeAddress16.cs" />
     <Compile Include="src\XBee\XBeeAddress64.cs" />
