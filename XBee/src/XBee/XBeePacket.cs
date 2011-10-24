@@ -6,16 +6,21 @@
 
     public enum XBeeSpecialBytes : byte
     {
-        START_BYTE = 0x7E,
-        ESCAPE_BYTE = 0x7D,
-        XON_BYTE = 0x11,
-        XOFF_BYTE = 0x13
+        StartByte = 0x7E,
+        EscapeByte = 0x7D,
+        Xon = 0x11,
+        Xoff = 0x13
     };
 
     public class XBeePacket
     {
         private readonly byte[] frameData;
-        private byte[] packetData;
+        public byte[] Data { get; private set; }
+
+        public XBeePacket(XBeeFrame frame)
+        {
+            frameData = frame.ToByteArray();
+        }
 
         public XBeePacket(byte[] frameData)
         {
@@ -26,7 +31,7 @@
         {
             var data = new MemoryStream();
 
-            data.WriteByte((byte) XBeeSpecialBytes.START_BYTE);
+            data.WriteByte((byte) XBeeSpecialBytes.StartByte);
 
             var packetLength = BitConverter.GetBytes(frameData.Length);
             Array.Reverse(packetLength);
@@ -38,7 +43,7 @@
 
             data.WriteByte(XBeeChecksum.Calculate(frameData));
 
-            packetData = data.ToArray();
+            Data = data.ToArray();
         }
 
     }
