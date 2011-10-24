@@ -58,6 +58,7 @@
     <Compile Include="src\XBee\Frames\ATCommandTest.cs" />
     <Compile Include="src\XBee\Frames\ATQueueCommandTest.cs" />
     <Compile Include="src\XBee\Frames\ATUtilTest.cs" />
+    <Compile Include="src\XBee\Frames\ATValueTest.cs" />
     <Compile Include="src\XBee\Frames\CreateSourceRouteTest.cs" />
     <Compile Include="src\XBee\Frames\ExplicitAddressingTransmitTest.cs" />
     <Compile Include="src\XBee\Frames\ManyToOneRouteRequestTest.cs" />
