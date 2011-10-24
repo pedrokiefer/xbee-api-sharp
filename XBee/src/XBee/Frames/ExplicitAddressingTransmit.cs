@@ -97,7 +97,7 @@ namespace XBee.Frames
 
         public override void Parse()
         {
-            this.FrameId = (byte) parser.ReadByte();
+            FrameId = (byte) parser.ReadByte();
 
             destination = new XBeeNode { Address64 = parser.ReadAddress64(), Address16 = parser.ReadAddress16() };
 
