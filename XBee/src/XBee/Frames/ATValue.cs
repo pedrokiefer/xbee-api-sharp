@@ -48,7 +48,24 @@ namespace XBee.Frames
         public override ATValue FromByteArray(byte[] value)
         {
             Array.Reverse(value);
-            return new ATLongValue(BitConverter.ToUInt64(value, 0));
+            return new ATLongValue(ToInt(value));
+        }
+
+        private ulong ToInt(byte[] value)
+        {
+            switch(value.Length)
+            {
+                case 1:
+                    return (ulong) value[0];
+                case 2:
+                    return (ulong) BitConverter.ToUInt16(value, 0);
+                case 4:
+                    return (ulong) BitConverter.ToUInt32(value, 0);
+                case 8:
+                    return (ulong) BitConverter.ToUInt64(value, 0);
+                default:
+                    throw new InvalidCastException("Value has more bytes than a 64 bits integer.");
+            }
         }
 
         public override byte[] ToByteArray()
