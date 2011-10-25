@@ -16,16 +16,16 @@ namespace XBee
     public enum XBeeSeriesId : byte
     {
         [XBeeHardware("XBee Series 1")]
-        XBEE_SERIES_1 = 0x17,
+        XBeeSeries1 = 0x17,
         [XBeeHardware("XBee Series 1 Pro")]
-        XBEE_SERIES_1_PRO = 0x18,
+        XBeeSeries1Pro = 0x18,
         [XBeeHardware("XBee Series 2")]
-        XBEE_SERIES_2 = 0x19,
+        XBeeSeries2 = 0x19,
         [XBeeHardware("XBee Series 2 Pro")]
-        XBEE_SERIES_2_PRO = 0x1A,
+        XBeeSeries2Pro = 0x1A,
         [XBeeHardware("XBee Series 2B Pro")]
-        XBEE_SERIES_2B_PRO = 0x1E,
+        XBeeSeries2BPro = 0x1E,
         [XBeeHardware("XBee Unknown")]
-        XBEE_SERIES_UNKNOWN = 0xFF
+        XBeeSeriesUnknown = 0xFF
     };
 }
