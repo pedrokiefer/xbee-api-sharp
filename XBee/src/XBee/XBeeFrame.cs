@@ -12,7 +12,7 @@ namespace XBee
 
         public XBeeAPICommandId GetCommandId()
         {
-            return this.CommandId;
+            return CommandId;
         }
 
         public abstract byte[] ToByteArray();

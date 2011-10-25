@@ -6,7 +6,7 @@ using System.IO;
 
 namespace XBee
 {
-    public interface XBeeConnection
+    public interface IXBeeConnection
     {
         void Write(byte[] data);
         Stream GetStream();
