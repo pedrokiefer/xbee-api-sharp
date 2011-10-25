@@ -10,6 +10,7 @@ namespace XBee
     {
         void Write(byte[] data);
         Stream GetStream();
+        void Open();
         void Close();
     }
 }

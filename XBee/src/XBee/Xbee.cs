@@ -2,6 +2,7 @@
 using System.Collections.Generic;
 using System.Linq;
 using System.Text;
+using System.Threading;
 using NLog;
 using XBee.Exceptions;
 using XBee.Frames;
@@ -11,11 +12,12 @@ namespace XBee
     public class XBee
     {
         private static Logger logger = LogManager.GetCurrentClassLogger();
-        private XBeeConnection connection;
+        private IXBeeConnection connection;
 
-        public void SetConnection(XBeeConnection connection)
+        public void SetConnection(IXBeeConnection connection)
         {
             this.connection = connection;
+            this.connection.Open();
         }
 
         public void SendRequest(XBeeFrame frame)
@@ -32,6 +34,11 @@ namespace XBee
 
             lock (this) {
                 SendRequest(frame);
+            }
+
+            while (true)
+            {
+                Thread.Sleep(10);
             }
 
             return new ATCommandResponse();

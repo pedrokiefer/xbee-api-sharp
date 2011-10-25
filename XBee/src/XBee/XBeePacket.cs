@@ -33,7 +33,7 @@
 
             data.WriteByte((byte) XBeeSpecialBytes.StartByte);
 
-            var packetLength = BitConverter.GetBytes(frameData.Length);
+            var packetLength = BitConverter.GetBytes((ushort)frameData.Length);
             Array.Reverse(packetLength);
 
             data.WriteByte(packetLength[0]);
