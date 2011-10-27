@@ -80,8 +80,8 @@
     <Compile Include="src\XBee\XBeeHardwareVersion.cs" />
     <Compile Include="src\XBee\XBeeNode.cs" />
     <Compile Include="src\XBee\XBeePacket.cs" />
-    <Compile Include="src\XBee\XBeePacketMarshaler.cs" />
     <Compile Include="src\XBee\XBeePacketUnmarshaler.cs" />
+    <Compile Include="src\XBee\XBeeSpecialBytes.cs" />
   </ItemGroup>
   <ItemGroup />
   <Import Project="$(MSBuildToolsPath)\Microsoft.CSharp.targets" />
