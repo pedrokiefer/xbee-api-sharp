@@ -14,11 +14,6 @@ namespace XBee
         private static readonly Logger logger = LogManager.GetCurrentClassLogger();
         private static readonly Dictionary<XBeeAPICommandId, Type> framesMap = createFramesMap();
 
-        public static XBeeFrame Unmarshal(XBeePacket packet)
-        {
-            return new TransmitDataRequest(new XBeeNode());
-        }
-
         private static Dictionary<XBeeAPICommandId, Type> createFramesMap()
         {
             var map = new Dictionary<XBeeAPICommandId, Type>
