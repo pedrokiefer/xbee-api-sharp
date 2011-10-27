@@ -6,6 +6,7 @@ using System.Threading;
 using NLog;
 using XBee.Exceptions;
 using XBee.Frames;
+using XBee.Utils;
 
 namespace XBee
 {
@@ -21,6 +22,9 @@ namespace XBee
     {
         private static Logger logger = LogManager.GetCurrentClassLogger();
         private IXBeeConnection connection;
+
+        private Thread receiveThread;
+        private bool stopThread;
 
         private bool frameReceived = false;
         private XBeeFrame lastFrame = null;
@@ -44,6 +48,13 @@ namespace XBee
             this.connection = connection;
             this.connection.Open();
             this.connection.SetPacketReader(reader);
+
+            /*
+            receiveThread = new Thread(new ThreadStart(ReceiveData));
+            receiveThread.Name = "Receive Data Thread";
+            receiveThread.IsBackground = true;
+            receiveThread.Start();
+             */
         }
 
         public void SendRequest(XBeeFrame frame)
@@ -72,11 +83,37 @@ namespace XBee
             return lastFrame;
         }
 
+        public void StopReceiveDataThread()
+        {
+            try {
+                if (receiveThread != null) {
+                    stopThread = true;
+                    receiveThread.Join(2000);
+                    receiveThread.Abort();
+                    receiveThread.Join(2000);
+                }
+            } catch (Exception e) {
+                logger.Info(e);
+            } finally {
+                receiveThread = null;
+            }
+        }
+
         private void FrameReceivedEvent(object sender, FrameReceivedArgs args)
         {
             frameReceived = true;
             lastFrame = args.Response;
             logger.Debug(args.Response);
+        }
+
+        private void ReceiveData()
+        {
+            try {
+                while (!stopThread) {
+
+                }
+            } catch {
+            }
         }
     }
 }
