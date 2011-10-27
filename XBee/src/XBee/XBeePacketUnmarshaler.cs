@@ -43,19 +43,13 @@ namespace XBee
 
         public static XBeeFrame Unmarshal(byte[] packetData)
         {
-            var dataStream = new MemoryStream(packetData);
-            return Unmarshal(dataStream);
-        }
-
-        public static XBeeFrame Unmarshal(MemoryStream dataStream)
-        {
             XBeeFrame frame;
-            var length = (uint) (dataStream.ReadByte() << 8 | dataStream.ReadByte());
+            var length = (uint) (packetData[0] << 8 | packetData[1]);
 
             if ((length == 0) || (length > 0xFFFF))
                 throw new XBeeFrameException("Invalid Frame Lenght");
 
-            if (length != dataStream.Length - 2)
+            if (length != packetData.Length - 3)
                 throw new XBeeFrameException("Invalid Frame Lenght");
 
             var cmd = (XBeeAPICommandId) dataStream.ReadByte();
