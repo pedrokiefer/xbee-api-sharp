@@ -42,8 +42,10 @@
   </ItemGroup>
   <ItemGroup>
     <Compile Include="src\AssemblyInfo.cs" />
+    <Compile Include="src\XBee\EscapedPacketReader.cs" />
     <Compile Include="src\XBee\Exceptions\XBeeException.cs" />
     <Compile Include="src\XBee\Exceptions\XBeeFrameException.cs" />
+    <Compile Include="src\XBee\FrameReceivedArgs.cs" />
     <Compile Include="src\XBee\Frames\AT.cs" />
     <Compile Include="src\XBee\Frames\ATCommand.cs" />
     <Compile Include="src\XBee\Frames\ATCommandResponse.cs" />
@@ -65,10 +67,13 @@
     <Compile Include="src\XBee\Frames\ZigBeeIODataSample.cs" />
     <Compile Include="src\XBee\Frames\ZigBeeReceivePacket.cs" />
     <Compile Include="src\XBee\Frames\ZigBeeTransmitStatus.cs" />
+    <Compile Include="src\XBee\IPacketReader.cs" />
     <Compile Include="src\XBee\PacketParser.cs" />
+    <Compile Include="src\XBee\PacketReader.cs" />
     <Compile Include="src\XBee\SerialConnection.cs" />
     <Compile Include="src\XBee\Utils\ByteUtils.cs" />
     <Compile Include="src\XBee\Utils\EnumAttribute.cs" />
+    <Compile Include="src\XBee\PacketReaderFactory.cs" />
     <Compile Include="src\XBee\XBee.cs" />
     <Compile Include="src\XBee\XBeeAddress.cs" />
     <Compile Include="src\XBee\XBeeAddress16.cs" />

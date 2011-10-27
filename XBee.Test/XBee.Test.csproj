@@ -54,6 +54,7 @@
   </ItemGroup>
   <ItemGroup>
     <Compile Include="src\AssemblyInfo.cs" />
+    <Compile Include="src\XBee\EscapedPacketReaderTest.cs" />
     <Compile Include="src\XBee\Frames\ATCommandResponseTest.cs" />
     <Compile Include="src\XBee\Frames\ATCommandTest.cs" />
     <Compile Include="src\XBee\Frames\ATQueueCommandTest.cs" />
