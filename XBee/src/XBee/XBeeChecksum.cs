@@ -16,7 +16,7 @@ namespace XBee
             // perform 2s complement
             checksum = 0xff - checksum;
 
-            logger.Debug("Computed checksum is {0:2x}", checksum);
+            logger.Debug(String.Format("Computed checksum is 0x{0:X2}", checksum));
             return (byte)checksum;
         }
 
@@ -25,7 +25,7 @@ namespace XBee
             int checksum = Calculate(data);
             checksum = checksum & 0xff;
 
-            logger.Debug("Verify checksum is {0:2x}", checksum);
+            logger.Debug(String.Format("Verify checksum is 0x{0:X2}", checksum));
 
             if (checksum == 0x00)
                 return true;
