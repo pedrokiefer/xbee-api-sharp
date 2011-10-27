@@ -1,4 +1,5 @@
-﻿using System.Linq;
+﻿using System;
+using System.Linq;
 using NLog;
 
 namespace XBee
@@ -27,10 +28,7 @@ namespace XBee
 
             logger.Debug(String.Format("Verify checksum is 0x{0:X2}", checksum));
 
-            if (checksum == 0x00)
-                return true;
-
-            return false;
+            return checksum == 0x00;
         }
     }
 }
