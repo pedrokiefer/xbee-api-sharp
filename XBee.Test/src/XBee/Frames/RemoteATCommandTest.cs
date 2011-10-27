@@ -45,7 +45,7 @@ namespace XBee.Test.Frames
             var packet = new byte[]
                              {
                                  0x00, 0x10, 0x17, 0x01, 0x00, 0x13, 0xA2, 0x00, 0x40, 0x40, 0x11, 0x22, 0xFF, 0xFE, 0x02,
-                                 0x42, 0x48, 0x01
+                                 0x42, 0x48, 0x01, 0xF5
                              };
 
             var frame = XBeePacketUnmarshaler.Unmarshal(packet);

@@ -15,7 +15,7 @@ namespace XBee.Test.Frames
         [Test]
         public void TestTransmitStatusParse()
         {
-            var packet = new byte[] { 0x00, 0x07, 0x8B, 0x01, 0x7D, 0x84, 0x00, 0x00, 0x01 };
+            var packet = new byte[] { 0x00, 0x07, 0x8B, 0x01, 0x7D, 0x84, 0x00, 0x00, 0x01, 0x71 };
             var frame = XBeePacketUnmarshaler.Unmarshal(packet);
             Assert.That(frame, Is.InstanceOf<ZigBeeTransmitStatus>());
 

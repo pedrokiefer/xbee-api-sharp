@@ -15,7 +15,7 @@ namespace XBee.Test.Frames
         [Test]
         public void TestModemStatusParse()
         {
-            var packet = new byte[] {0x00, 0x02, 0x8A, 0x06};
+            var packet = new byte[] { 0x00, 0x02, 0x8A, 0x06, 0x6F };
             var frame = XBeePacketUnmarshaler.Unmarshal(packet);
             Assert.That(frame, Is.InstanceOf<ModemStatus>());
 

@@ -56,7 +56,7 @@ namespace XBee.Test
         [Test]
         public void TestXBeeUnmarshalerATCommandNoData()
         {
-            var packetData = new byte[] { 0x00, 0x04, 0x08, 0x01, (byte) 'D', (byte) 'H' };
+            var packetData = new byte[] { 0x00, 0x04, 0x08, 0x01, (byte) 'D', (byte) 'H', 0x6A };
 
             var frame = XBeePacketUnmarshaler.Unmarshal(packetData);
             Assert.That(frame, Is.InstanceOf<ATCommand>());
@@ -68,7 +68,7 @@ namespace XBee.Test
         [Test]
         public void TestXBeeUnmarshalerATCommand()
         {
-            var packetData = new byte[] { 0x00, 0x08, 0x08, 0x01, (byte) 'D', (byte) 'H', 0x11, 0x22, 0x33, 0x00 };
+            var packetData = new byte[] { 0x00, 0x08, 0x08, 0x01, (byte) 'D', (byte) 'H', 0x11, 0x22, 0x33, 0x00, 0x04 };
 
             var frame = XBeePacketUnmarshaler.Unmarshal(packetData);
             Assert.That(frame, Is.InstanceOf<ATCommand>());
