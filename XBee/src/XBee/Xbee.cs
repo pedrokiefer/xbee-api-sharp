@@ -9,6 +9,14 @@ using XBee.Frames;
 
 namespace XBee
 {
+    public enum ApiTypeValue : byte
+    {
+        Disabled = 0x00,
+        Enabled = 0x01,
+        EnabledWithEscape = 0x02,
+        Unknown = 0xFF
+    }
+
     public class XBee
     {
         private static Logger logger = LogManager.GetCurrentClassLogger();
