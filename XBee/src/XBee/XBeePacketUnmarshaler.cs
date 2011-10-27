@@ -47,10 +47,10 @@ namespace XBee
             var length = (uint) (packetData[0] << 8 | packetData[1]);
 
             if ((length == 0) || (length > 0xFFFF))
-                throw new XBeeFrameException("Invalid Frame Lenght");
+                throw new XBeeFrameException(String.Format("Invalid Frame Lenght {0}", length));
 
             if (length != packetData.Length - 3)
-                throw new XBeeFrameException("Invalid Frame Lenght");
+                throw new XBeeFrameException(String.Format("Invalid Frame Lenght - Expecting {0}, received {1}", length, packetData.Length - 3));
 
             var cmd = (XBeeAPICommandId) dataStream.ReadByte();
 
