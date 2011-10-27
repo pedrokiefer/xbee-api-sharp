@@ -4,14 +4,6 @@
     using System.Collections.Generic;
     using System.IO;
 
-    public enum XBeeSpecialBytes : byte
-    {
-        StartByte = 0x7E,
-        EscapeByte = 0x7D,
-        Xon = 0x11,
-        Xoff = 0x13
-    };
-
     public class XBeePacket
     {
         private readonly byte[] frameData;
