@@ -22,10 +22,28 @@ namespace XBee
         private static Logger logger = LogManager.GetCurrentClassLogger();
         private IXBeeConnection connection;
 
+        private bool frameReceived = false;
+        private XBeeFrame lastFrame = null;
+        private IPacketReader reader;
+        private ApiTypeValue apiType;
+
+
+        public ApiTypeValue ApiType
+        {
+            get { return apiType; }
+            set
+            {
+                apiType = value;
+                reader = PacketReaderFactory.GetReader(apiType);
+                reader.FrameReceived += FrameReceivedEvent;
+            }
+        }
+
         public void SetConnection(IXBeeConnection connection)
         {
             this.connection = connection;
             this.connection.Open();
+            this.connection.SetPacketReader(reader);
         }
 
         public void SendRequest(XBeeFrame frame)
@@ -44,12 +62,21 @@ namespace XBee
                 SendRequest(frame);
             }
 
-            while (true)
+            lastFrame = null;
+            frameReceived = false;
+            while (!frameReceived)
             {
                 Thread.Sleep(10);
             }
 
-            return new ATCommandResponse();
+            return lastFrame;
+        }
+
+        private void FrameReceivedEvent(object sender, FrameReceivedArgs args)
+        {
+            frameReceived = true;
+            lastFrame = args.Response;
+            logger.Debug(args.Response);
         }
     }
 }
