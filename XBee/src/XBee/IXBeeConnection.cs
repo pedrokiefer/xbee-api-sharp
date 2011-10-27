@@ -12,5 +12,6 @@ namespace XBee
         Stream GetStream();
         void Open();
         void Close();
+        void SetPacketReader(IPacketReader reader);
     }
 }

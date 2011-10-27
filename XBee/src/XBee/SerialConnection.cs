@@ -13,6 +13,7 @@ namespace XBee
     {
         private static readonly Logger logger = LogManager.GetCurrentClassLogger();
         private readonly SerialPort serialPort;
+        private IPacketReader reader;
 
         public SerialConnection(string port, int baudRate)
         {
@@ -28,6 +29,7 @@ namespace XBee
             serialPort.Read(buffer, 0, length);
 
             logger.Debug("Receiving data: [" + ByteUtils.ToBase16(buffer) + "]");
+            reader.ReceiveData(buffer);
         }
 
         public void Write(byte[] data)
@@ -49,6 +51,11 @@ namespace XBee
         public void Close()
         {
             serialPort.Close();
+        }
+
+        public void SetPacketReader(IPacketReader reader)
+        {
+            this.reader = reader;
         }
     }
 }
