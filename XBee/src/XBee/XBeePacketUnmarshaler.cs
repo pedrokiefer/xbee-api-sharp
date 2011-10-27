@@ -52,6 +52,11 @@ namespace XBee
             if (length != packetData.Length - 3)
                 throw new XBeeFrameException(String.Format("Invalid Frame Lenght - Expecting {0}, received {1}", length, packetData.Length - 3));
 
+            var checkData = packetData.Skip(2).ToArray();
+            if (!XBeeChecksum.Verify(checkData)) 
+                throw new XBeeFrameException("Invalid Frame Checksum");
+
+            var dataStream = new MemoryStream(checkData.Take(checkData.Length - 1).ToArray());
             var cmd = (XBeeAPICommandId) dataStream.ReadByte();
 
             if (framesMap.ContainsKey(cmd)) {
