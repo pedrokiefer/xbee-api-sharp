@@ -5,34 +5,12 @@ using XBee.Exceptions;
 
 namespace XBee
 {
-    public class EscapedPacketReader : IPacketReader
+    public class EscapedPacketReader : PacketReader
     {
-        public event FrameReceivedHandler FrameReceived;
-
-        private MemoryStream stream = new MemoryStream();
-        private uint packetLength = 0;
-
-        public void ReceiveData(byte[] data)
+        protected override void ProcessReceivedData()
         {
-            if (data[0] == (byte) XBeeSpecialBytes.StartByte) {
-                stream = new MemoryStream();
-                packetLength = (uint) (data[1] << 8 | data[2]) + 3;
-                EscapeData(data);
-            } else if (packetLength != 0) {
-                EscapeData(data);
-            }
-
-            if (stream.Length != packetLength)
-                return;
-
-            try {
-                stream.Position = 0;
-                var frame = XBeePacketUnmarshaler.Unmarshal(stream.ToArray());
-                if (FrameReceived != null)
-                    FrameReceived.Invoke(this, new FrameReceivedArgs(frame));
-            } catch (XBeeFrameException ex) {
-                throw new XBeeException("Unable to unmarshal packet", ex);
-            }
+            Stream = EscapeData(Stream.ToArray());
+            base.ProcessReceivedData();
         }
 
         public MemoryStream EscapeData(byte[] data)
