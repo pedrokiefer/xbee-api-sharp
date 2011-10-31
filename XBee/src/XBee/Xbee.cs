@@ -31,7 +31,6 @@ namespace XBee
         private IPacketReader reader;
         private ApiTypeValue apiType;
 
-
         public ApiTypeValue ApiType
         {
             get { return apiType; }
@@ -75,9 +74,10 @@ namespace XBee
 
             lastFrame = null;
             frameReceived = false;
-            while (!frameReceived)
-            {
+
+            while (!frameReceived && timeout > 0) {
                 Thread.Sleep(10);
+                timeout -= 10;
             }
 
             return lastFrame;
