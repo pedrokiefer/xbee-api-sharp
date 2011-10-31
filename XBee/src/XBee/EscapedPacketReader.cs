@@ -38,6 +38,7 @@ namespace XBee
         public MemoryStream EscapeData(byte[] data)
         {
             var escapeNext = false;
+            var escapedData = new MemoryStream();
             foreach (var b in data) {
                 if (IsSpecialByte(b)) {
                     if (b == (byte) XBeeSpecialBytes.EscapeByte) {
@@ -50,13 +51,13 @@ namespace XBee
                 }
 
                 if (escapeNext) {
-                    stream.WriteByte(EscapeByte(b));
+                    escapedData.WriteByte(EscapeByte(b));
                     escapeNext = false;
                 } else {
-                    stream.WriteByte(b);
+                    escapedData.WriteByte(b);
                 }
             }
-            return stream;
+            return escapedData;
         }
 
         public bool IsSpecialByte(byte b)
