@@ -26,6 +26,8 @@ namespace XBee
         private Thread receiveThread;
         private bool stopThread;
 
+        private byte frameId = byte.MinValue;
+
         private bool frameReceived = false;
         private XBeeFrame lastFrame = null;
         private IPacketReader reader;
@@ -56,20 +58,42 @@ namespace XBee
              */
         }
 
-        public void SendRequest(XBeeFrame frame)
+        public void Execute(XBeeFrame frame)
         {
+            if (frame.FrameId != 0) {
+                if (frameId == byte.MaxValue)
+                    frameId = byte.MinValue;
+
+                frame.FrameId = ++frameId;
+            }
+
             var packet = new XBeePacket(frame);
             packet.Assemble();
             connection.Write(packet.Data);
         }
 
-        public XBeeFrame SendSynchronous(XBeeFrame frame, int timeout)
+        public T ExecuteQuery<T>(XBeeFrame frame) where T : XBeeFrame
+        {
+            return (T) ExecuteQuery(frame);
+        }
+
+        public T ExecuteQuery<T>(XBeeFrame frame, int timeout) where T : XBeeFrame
+        {
+            return (T) ExecuteQuery(frame, timeout);
+        }
+
+        public XBeeFrame ExecuteQuery(XBeeFrame frame)
+        {
+            return ExecuteQuery(frame, 3000);
+        }
+
+        public XBeeFrame ExecuteQuery(XBeeFrame frame, int timeout)
         {
             if (frame.FrameId == 0)
                 throw new XBeeFrameException("FrameId cannot be zero on a synchronous request.");
 
             lock (this) {
-                SendRequest(frame);
+                Execute(frame);
             }
 
             lastFrame = null;
