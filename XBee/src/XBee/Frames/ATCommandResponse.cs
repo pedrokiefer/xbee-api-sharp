@@ -59,7 +59,15 @@ namespace XBee.Frames
 
         private void ParseNetworkDiscovery()
         {
-            throw new NotImplementedException();
+            var source = new XBeeNode { Address16 = parser.ReadAddress16(), Address64 = parser.ReadAddress64() };
+            var nodeIdentifier = parser.ReadString();
+            var parentAddress = parser.ReadAddress16();
+            var type = (NodeIdentification.DeviceType) parser.ReadByte();
+            var status = parser.ReadByte();
+            var profileId = parser.ReadUInt16();
+            var manufacturerId = parser.ReadUInt16();
+
+            Console.WriteLine(string.Format("source {0}, id {1}, status {2}", source.Address64, nodeIdentifier, status));
         }
     }
 }
