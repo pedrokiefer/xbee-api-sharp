@@ -75,6 +75,7 @@
     <Compile Include="src\XBee\Frames\ZigBeeIODataSampleTest.cs" />
     <Compile Include="src\XBee\Frames\ZigBeeReceivePacketTest.cs" />
     <Compile Include="src\XBee\Frames\ZigBeeTransmitStatusTest.cs" />
+    <Compile Include="src\XBee\PacketReaderFactoryTest.cs" />
     <Compile Include="src\XBee\XBeeAddressTest.cs" />
     <Compile Include="src\XBee\XBeeChecksumTest.cs" />
     <Compile Include="src\XBee\XBeePacketTest.cs" />
