@@ -35,7 +35,7 @@ namespace XBee
             if (Stream.Length < 3)
                 return;
 
-            if (packetLength != 0 && Stream.Length != packetLength)
+            if (packetLength != 0 && Stream.Length < packetLength)
                 return;
 
             ProcessReceivedData();
