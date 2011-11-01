@@ -83,6 +83,7 @@
     <Compile Include="XBeeAddressTest.cs" />
     <Compile Include="XBeeConnectionTest.cs" />
     <Compile Include="XBeePacketTest.cs" />
+    <Compile Include="XBeeTest.cs" />
     <Compile Include="XBeeUnmarshalerTest.cs" />
     <Compile Include="XBeeChecksumTest.cs" />
   </ItemGroup>
