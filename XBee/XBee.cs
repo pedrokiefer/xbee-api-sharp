@@ -87,12 +87,12 @@ namespace XBee
             if (frame.FrameId == 0)
                 throw new XBeeFrameException("FrameId cannot be zero on a synchronous request.");
 
+            lastFrame = null;
+            frameReceived = false;
+
             lock (this) {
                 Execute(frame);
             }
-
-            lastFrame = null;
-            frameReceived = false;
 
             while (!frameReceived && timeout > 0) {
                 Thread.Sleep(10);
@@ -118,7 +118,7 @@ namespace XBee
             }
         }
 
-        private void FrameReceivedEvent(object sender, FrameReceivedArgs args)
+        public void FrameReceivedEvent(object sender, FrameReceivedArgs args)
         {
             frameReceived = true;
             lastFrame = args.Response;
