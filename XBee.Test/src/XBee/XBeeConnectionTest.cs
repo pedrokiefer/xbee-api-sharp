@@ -10,11 +10,11 @@ namespace XBee.Test
         public void TestXBeeConnection()
         {
             var conn = new Mock<IXBeeConnection>();
-            var xbee = new XBee();
-            xbee.ApiType = ApiTypeValue.Enabled;
+            var xbee = new XBee {ApiType = ApiTypeValue.Enabled};
+
             xbee.SetConnection(conn.Object);
 
-            conn.Verify();
+            conn.Verify(connection => connection.SetPacketReader(It.IsAny<IPacketReader>()) );
         }
     }
 }
