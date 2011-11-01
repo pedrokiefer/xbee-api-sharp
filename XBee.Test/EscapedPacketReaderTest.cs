@@ -1,8 +1,3 @@
-﻿using System;
-using System.Collections.Generic;
-using System.Linq;
-using System.Text;
-using XBee;
 using NUnit.Framework;
 using XBee.Frames;
 

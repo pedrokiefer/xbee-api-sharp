@@ -56,35 +56,35 @@
     <Reference Include="System.Xml" />
   </ItemGroup>
   <ItemGroup>
-    <Compile Include="src\AssemblyInfo.cs" />
-    <Compile Include="src\XBee\EscapedPacketReaderTest.cs" />
-    <Compile Include="src\XBee\Frames\ATCommandResponseTest.cs" />
-    <Compile Include="src\XBee\Frames\ATCommandTest.cs" />
-    <Compile Include="src\XBee\Frames\ATQueueCommandTest.cs" />
-    <Compile Include="src\XBee\Frames\ATUtilTest.cs" />
-    <Compile Include="src\XBee\Frames\ATValueTest.cs" />
-    <Compile Include="src\XBee\Frames\CreateSourceRouteTest.cs" />
-    <Compile Include="src\XBee\Frames\ExplicitAddressingTransmitTest.cs" />
-    <Compile Include="src\XBee\Frames\ManyToOneRouteRequestTest.cs" />
-    <Compile Include="src\XBee\Frames\ModemStatusTest.cs" />
-    <Compile Include="src\XBee\Frames\NodeIdentificationTest.cs" />
-    <Compile Include="src\XBee\Frames\OverAirUpdateStatusTest.cs" />
-    <Compile Include="src\XBee\Frames\RemoteATCommandTest.cs" />
-    <Compile Include="src\XBee\Frames\RemoteCommandResponseTest.cs" />
-    <Compile Include="src\XBee\Frames\RouteRecordIndicatorTest.cs" />
-    <Compile Include="src\XBee\Frames\SensorReadIndicatorTest.cs" />
-    <Compile Include="src\XBee\Frames\TransmitDataRequestTest.cs" />
-    <Compile Include="src\XBee\Frames\ZigBeeExplicitRXIndicatorTest.cs" />
-    <Compile Include="src\XBee\Frames\ZigBeeIODataSampleTest.cs" />
-    <Compile Include="src\XBee\Frames\ZigBeeReceivePacketTest.cs" />
-    <Compile Include="src\XBee\Frames\ZigBeeTransmitStatusTest.cs" />
-    <Compile Include="src\XBee\PacketReaderFactoryTest.cs" />
-    <Compile Include="src\XBee\PacketReaderTest.cs" />
-    <Compile Include="src\XBee\XBeeAddressTest.cs" />
-    <Compile Include="src\XBee\XBeeChecksumTest.cs" />
-    <Compile Include="src\XBee\XBeeConnectionTest.cs" />
-    <Compile Include="src\XBee\XBeePacketTest.cs" />
-    <Compile Include="src\XBee\XBeeUnmarshalerTest.cs" />
+    <Compile Include="EscapedPacketReaderTest.cs" />
+    <Compile Include="Frames\ATCommandResponseTest.cs" />
+    <Compile Include="Frames\ATQueueCommandTest.cs" />
+    <Compile Include="Frames\CreateSourceRouteTest.cs" />
+    <Compile Include="Frames\ExplicitAddressingTransmitTest.cs" />
+    <Compile Include="Frames\ManyToOneRouteRequestTest.cs" />
+    <Compile Include="Frames\ModemStatusTest.cs" />
+    <Compile Include="Frames\NodeIdentificationTest.cs" />
+    <Compile Include="Frames\OverAirUpdateStatusTest.cs" />
+    <Compile Include="Frames\RemoteATCommandTest.cs" />
+    <Compile Include="Frames\RemoteCommandResponseTest.cs" />
+    <Compile Include="Frames\RouteRecordIndicatorTest.cs" />
+    <Compile Include="Frames\SensorReadIndicatorTest.cs" />
+    <Compile Include="Frames\TransmitDataRequestTest.cs" />
+    <Compile Include="Frames\ZigBeeExplicitRXIndicatorTest.cs" />
+    <Compile Include="Frames\ZigBeeIODataSampleTest.cs" />
+    <Compile Include="Frames\ZigBeeReceivePacketTest.cs" />
+    <Compile Include="Frames\ZigBeeTransmitStatusTest.cs" />
+    <Compile Include="PacketReaderTest.cs" />
+    <Compile Include="Frames\ATCommandTest.cs" />
+    <Compile Include="Frames\ATUtilTest.cs" />
+    <Compile Include="Frames\ATValueTest.cs" />
+    <Compile Include="PacketReaderFactoryTest.cs" />
+    <Compile Include="Properties\AssemblyInfo.cs" />
+    <Compile Include="XBeeAddressTest.cs" />
+    <Compile Include="XBeeConnectionTest.cs" />
+    <Compile Include="XBeePacketTest.cs" />
+    <Compile Include="XBeeUnmarshalerTest.cs" />
+    <Compile Include="XBeeChecksumTest.cs" />
   </ItemGroup>
   <ItemGroup>
     <ProjectReference Include="..\XBee\XBee.csproj">
@@ -93,7 +93,7 @@
     </ProjectReference>
   </ItemGroup>
   <ItemGroup>
-    <None Include="src\NLog.config">
+    <None Include="NLog.config">
       <CopyToOutputDirectory>PreserveNewest</CopyToOutputDirectory>
     </None>
   </ItemGroup>
