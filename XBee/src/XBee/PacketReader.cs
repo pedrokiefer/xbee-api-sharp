@@ -13,7 +13,7 @@ namespace XBee
 
         public void ReceiveData(byte[] data)
         {
-            if (data[0] == (byte) XBeeSpecialBytes.StartByte) {
+            if (packetLength == 0 && data[0] == (byte) XBeeSpecialBytes.StartByte) {
                 Stream = new MemoryStream();
                 packetLength = 0;
             }
@@ -23,7 +23,7 @@ namespace XBee
 
         private void CopyAndProcessData(byte[] data)
         {
-            foreach (var b in data.Where(b => b != (byte) XBeeSpecialBytes.StartByte)) {
+            foreach (var b in data.Where(b => Stream.Length != 0 || b != (byte) XBeeSpecialBytes.StartByte)) {
                 Stream.WriteByte(b);
             }
 
@@ -45,6 +45,7 @@ namespace XBee
         {
             try {
                 var frame = XBeePacketUnmarshaler.Unmarshal(Stream.ToArray());
+                packetLength = 0;
                 if (FrameReceived != null)
                     FrameReceived.Invoke(this, new FrameReceivedArgs(frame));
             } catch (XBeeFrameException ex) {
