@@ -37,6 +37,9 @@
     </StartupObject>
   </PropertyGroup>
   <ItemGroup>
+    <Reference Include="Moq">
+      <HintPath>References\Moq.dll</HintPath>
+    </Reference>
     <Reference Include="nunit-gui-runner">
       <HintPath>..\..\Program Files\NUnit 2.5.10\bin\net-2.0\lib\nunit-gui-runner.dll</HintPath>
     </Reference>
@@ -78,6 +81,7 @@
     <Compile Include="src\XBee\PacketReaderFactoryTest.cs" />
     <Compile Include="src\XBee\XBeeAddressTest.cs" />
     <Compile Include="src\XBee\XBeeChecksumTest.cs" />
+    <Compile Include="src\XBee\XBeeConnectionTest.cs" />
     <Compile Include="src\XBee\XBeePacketTest.cs" />
     <Compile Include="src\XBee\XBeeUnmarshalerTest.cs" />
   </ItemGroup>
