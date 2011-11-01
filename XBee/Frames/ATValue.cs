@@ -55,13 +55,13 @@ namespace XBee.Frames
         {
             switch (value.Length) {
                 case 1:
-                    return (ulong)value[0];
+                    return value[0];
                 case 2:
-                    return (ulong)BitConverter.ToUInt16(value, 0);
+                    return BitConverter.ToUInt16(value, 0);
                 case 4:
-                    return (ulong)BitConverter.ToUInt32(value, 0);
+                    return BitConverter.ToUInt32(value, 0);
                 case 8:
-                    return (ulong)BitConverter.ToUInt64(value, 0);
+                    return BitConverter.ToUInt64(value, 0);
                 default:
                     throw new InvalidCastException("Value has more bytes than a 64 bits integer.");
             }
@@ -71,7 +71,7 @@ namespace XBee.Frames
         {
             byte[] longArray;
             if (Value <= 0xFF)
-                longArray = new byte[] { (byte)Value };
+                longArray = new[] { (byte)Value };
             else if (Value <= 0xFFFF)
                 longArray = BitConverter.GetBytes((ushort)Value);
             else if (Value <= 0xFFFFFFFF)

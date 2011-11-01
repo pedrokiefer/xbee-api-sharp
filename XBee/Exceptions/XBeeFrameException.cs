@@ -3,7 +3,7 @@ using System.Runtime.Serialization;
 
 namespace XBee.Exceptions
 {
-    public class XBeeFrameException : System.Exception
+    public class XBeeFrameException : Exception
     {
         public XBeeFrameException(String message)
             : base(message)

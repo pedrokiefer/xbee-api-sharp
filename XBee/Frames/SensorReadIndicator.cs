@@ -24,7 +24,7 @@ namespace XBee.Frames
         {
             this.parser = parser;
             CommandId = XBeeAPICommandId.SENSOR_READ_INDICATOR;
-            ADValues = new ushort[4] { 0xFFFF, 0xFFFF, 0xFFFF, 0xFFFF };
+            ADValues = new ushort[] { 0xFFFF, 0xFFFF, 0xFFFF, 0xFFFF };
         }
 
         public override byte[] ToByteArray()

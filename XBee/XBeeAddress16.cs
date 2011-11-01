@@ -5,8 +5,8 @@ namespace XBee
 {
     public class XBeeAddress16 : XBeeAddress
     {
-        public static XBeeAddress16 BROADCAST = new XBeeAddress16((ushort)0xFFFF);
-        public static XBeeAddress16 ZNET_BROADCAST = new XBeeAddress16((ushort)0xFFFE);
+        public static XBeeAddress16 BROADCAST = new XBeeAddress16(0xFFFF);
+        public static XBeeAddress16 ZNET_BROADCAST = new XBeeAddress16(0xFFFE);
 
         private readonly byte[] address;
 

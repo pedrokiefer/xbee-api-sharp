@@ -22,7 +22,7 @@ namespace XBee.Frames
         public ModemStatus(PacketParser parser)
         {
             this.parser = parser;
-            this.CommandId = XBeeAPICommandId.MODEM_STATUS_RESPONSE;
+            CommandId = XBeeAPICommandId.MODEM_STATUS_RESPONSE;
         }
 
         public override byte[] ToByteArray()

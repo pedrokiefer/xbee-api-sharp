@@ -1,8 +1,4 @@
-﻿using System;
-using System.Collections.Generic;
-using System.Linq;
-using System.Text;
-using XBee.Exceptions;
+﻿using XBee.Exceptions;
 
 namespace XBee
 {
@@ -10,7 +6,7 @@ namespace XBee
     {
         public static IPacketReader GetReader(ApiTypeValue apiType)
         {
-            IPacketReader reader = null;
+            IPacketReader reader;
             switch(apiType)
             {
                 case ApiTypeValue.Disabled:

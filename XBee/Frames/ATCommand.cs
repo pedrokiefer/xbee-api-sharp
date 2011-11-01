@@ -1,7 +1,4 @@
 ﻿using System;
-using System.Collections.Generic;
-using System.Linq;
-using System.Text;
 using System.IO;
 using XBee.Utils;
 
@@ -18,7 +15,7 @@ namespace XBee.Frames
         public AT Command
         {
             get { return atCommand; }
-            set { this.atCommand = value; }
+            set { atCommand = value; }
         }
 
         public ATCommand(PacketParser parser)

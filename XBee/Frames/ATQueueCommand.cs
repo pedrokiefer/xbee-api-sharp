@@ -6,7 +6,7 @@ namespace XBee.Frames
     {
         public ATQueueCommand(AT atCommand) : base(atCommand)
         {
-            this.CommandId = XBeeAPICommandId.AT_COMMAND_QUEUE_REQUEST;
+            CommandId = XBeeAPICommandId.AT_COMMAND_QUEUE_REQUEST;
         }
 
         public override void Parse()

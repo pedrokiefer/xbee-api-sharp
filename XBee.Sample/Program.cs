@@ -1,9 +1,5 @@
 ﻿using System;
-using System.Collections.Generic;
-using System.Linq;
-using System.Text;
 using System.Threading;
-using XBee;
 using XBee.Frames;
 
 namespace XBee.Sample
@@ -12,8 +8,7 @@ namespace XBee.Sample
     {
         static void Main(string[] args)
         {
-            var bee = new XBee();
-            bee.ApiType = ApiTypeValue.Enabled;
+            var bee = new XBee {ApiType = ApiTypeValue.Enabled};
             bee.SetConnection(new SerialConnection("COM4", 9600));
 
             var request = new ATCommand(AT.ApiEnable) { FrameId = 1 };

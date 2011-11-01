@@ -43,11 +43,11 @@ namespace XBee.Frames
             stream.Write(destination.Address64.GetAddress(), 0, 8);
             stream.Write(destination.Address16.GetAddress(), 0, 2);
 
-            stream.WriteByte((byte)BroadcastRadius);
+            stream.WriteByte(BroadcastRadius);
             stream.WriteByte((byte)Options);
 
-            if (this.rfData != null) {
-                stream.Write(this.rfData, 0, this.rfData.Length);
+            if (rfData != null) {
+                stream.Write(rfData, 0, rfData.Length);
             }
 
             return stream.ToArray();

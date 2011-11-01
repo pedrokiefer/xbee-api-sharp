@@ -7,31 +7,25 @@ namespace XBee.Test.Frames
     class RemoteATCommandTest
     {
         [Test]
-        public void TestRemoteATCommandND()
+        public void TestRemoteATCommandNodeDiscovery()
         {
-            var broadcast = new XBeeNode();
-            broadcast.Address16 = XBeeAddress16.ZNET_BROADCAST;
-            broadcast.Address64 = XBeeAddress64.BROADCAST;
+            var broadcast = new XBeeNode { Address16 = XBeeAddress16.ZNET_BROADCAST, Address64 = XBeeAddress64.BROADCAST };
 
-            var cmd = new RemoteATCommand(AT.NodeDiscover, broadcast);
-            cmd.FrameId = 1;
+            var cmd = new RemoteATCommand(AT.NodeDiscover, broadcast) { FrameId = 1 };
 
-            Assert.AreEqual(new byte[] { 0x17, 0x01, 0x00, 0x00, 0x00, 0x00, 0x00, 0x00, 0xFF, 0xFF, 0xFF, 0xFE, 0x00, (byte)'N', (byte)'D' }, cmd.ToByteArray());
+            Assert.AreEqual(new byte[] { 0x17, 0x01, 0x00, 0x00, 0x00, 0x00, 0x00, 0x00, 0xFF, 0xFF, 0xFF, 0xFE, 0x00, (byte) 'N', (byte) 'D' }, cmd.ToByteArray());
         }
 
         [Test]
-        public void TestRemoteATCommandDH()
+        public void TestRemoteATCommandDestinationHigh()
         {
-            var broadcast = new XBeeNode();
-            broadcast.Address16 = XBeeAddress16.ZNET_BROADCAST;
-            broadcast.Address64 = XBeeAddress64.BROADCAST;
+            var broadcast = new XBeeNode { Address16 = XBeeAddress16.ZNET_BROADCAST, Address64 = XBeeAddress64.BROADCAST };
 
-            var cmd = new RemoteATCommand(AT.DestinationHigh, broadcast);
-            cmd.FrameId = 1;
+            var cmd = new RemoteATCommand(AT.DestinationHigh, broadcast) { FrameId = 1 };
             var v = new ATLongValue(0x11223300);
             cmd.SetValue(v);
 
-            Assert.AreEqual(new byte[] { 0x17, 0x01, 0x00, 0x00, 0x00, 0x00, 0x00, 0x00, 0xFF, 0xFF, 0xFF, 0xFE, 0x00, (byte)'D', (byte)'H', 0x11, 0x22, 0x33, 0x00 }, cmd.ToByteArray());
+            Assert.AreEqual(new byte[] { 0x17, 0x01, 0x00, 0x00, 0x00, 0x00, 0x00, 0x00, 0xFF, 0xFF, 0xFF, 0xFE, 0x00, (byte) 'D', (byte) 'H', 0x11, 0x22, 0x33, 0x00 }, cmd.ToByteArray());
         }
 
         [Test]

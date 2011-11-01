@@ -6,7 +6,7 @@ namespace XBee.Test
     [TestFixture]
     class EscapedPacketReaderTest
     {
-        private XBeeFrame frame = null;
+        private XBeeFrame frame;
         [Test]
         public void TestIsSpecialByteIsTrue()
         {

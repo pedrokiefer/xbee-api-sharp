@@ -1,8 +1,4 @@
-﻿using System;
-using System.Collections.Generic;
-using System.Linq;
-using System.Text;
-using XBee.Utils;
+﻿using XBee.Utils;
 
 namespace XBee
 {
@@ -12,7 +8,7 @@ namespace XBee
 
         public override string ToString()
         {
-            return ByteUtils.ToBase16(this.GetAddress());
+            return ByteUtils.ToBase16(GetAddress());
         }
     }
 }

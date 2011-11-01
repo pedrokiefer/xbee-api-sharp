@@ -1,7 +1,6 @@
 ﻿using System;
 using System.Collections.Generic;
 using System.Linq;
-using System.Text;
 using System.IO;
 using NLog;
 using XBee.Exceptions;
@@ -12,9 +11,9 @@ namespace XBee
     public class XBeePacketUnmarshaler
     {
         private static readonly Logger logger = LogManager.GetCurrentClassLogger();
-        private static readonly Dictionary<XBeeAPICommandId, Type> framesMap = createFramesMap();
+        private static readonly Dictionary<XBeeAPICommandId, Type> framesMap = CreateFramesMap();
 
-        private static Dictionary<XBeeAPICommandId, Type> createFramesMap()
+        private static Dictionary<XBeeAPICommandId, Type> CreateFramesMap()
         {
             var map = new Dictionary<XBeeAPICommandId, Type>
                 {

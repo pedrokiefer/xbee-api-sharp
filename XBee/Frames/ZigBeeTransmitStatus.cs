@@ -45,7 +45,7 @@ namespace XBee.Frames
         public ZigBeeTransmitStatus(PacketParser parser)
         {
             this.parser = parser;
-            this.CommandId = XBeeAPICommandId.TRANSMIT_STATUS_RESPONSE;
+            CommandId = XBeeAPICommandId.TRANSMIT_STATUS_RESPONSE;
         }
 
         public override byte[] ToByteArray()
@@ -55,7 +55,7 @@ namespace XBee.Frames
 
         public override void Parse()
         {
-            this.FrameId = (byte) parser.ReadByte();
+            FrameId = (byte) parser.ReadByte();
             Address = parser.ReadAddress16();
 
             TransmitRetryCount = parser.ReadByte();
