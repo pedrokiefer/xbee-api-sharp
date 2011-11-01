@@ -21,6 +21,11 @@ namespace XBee.Sample
             value = ((ATCommandResponse) frame).Value;
             Console.WriteLine(String.Format("Baud rate: {0}", ((ATLongValue) value).Value));
 
+            request = new ATCommand(AT.MaximumPayloadLenght) { FrameId = 1 };
+            frame = bee.ExecuteQuery(request, 1000);
+            value = ((ATCommandResponse) frame).Value;
+            Console.WriteLine(String.Format("Maximum Payload is: {0}", ((ATLongValue) value).Value));
+
             request = new ATCommand(AT.FirmwareVersion) { FrameId = 1 };
             frame = bee.ExecuteQuery(request, 1000);
             value = ((ATCommandResponse) frame).Value;
